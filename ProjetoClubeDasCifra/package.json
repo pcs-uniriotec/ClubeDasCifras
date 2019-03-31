@@ -1,0 +1,24 @@
+{
+  "name": "projetoclubedascifra",
+  "version": "1.0.0",
+  "description": "PCS Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm  start "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielCoelho97/ProjetoClubeDasCifra.git"
+  },
+  "keywords": [
+    "Cifras",
+    "Site"
+  ],
+  "author": "Daniel Coelho, João Vítor Oliveira, Mateus Ramos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielCoelho97/ProjetoClubeDasCifra/issues"
+  },
+  "homepage": "https://github.com/DanielCoelho97/ProjetoClubeDasCifra#readme"
+}
