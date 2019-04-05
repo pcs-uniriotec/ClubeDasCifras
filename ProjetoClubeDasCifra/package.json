@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/DanielCoelho97/ProjetoClubeDasCifra/issues"
   },
-  "homepage": "https://github.com/DanielCoelho97/ProjetoClubeDasCifra#readme"
+  "homepage": "https://github.com/DanielCoelho97/ProjetoClubeDasCifra#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
