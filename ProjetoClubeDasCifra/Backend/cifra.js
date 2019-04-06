@@ -4,13 +4,14 @@ class cifra{
         this.instrumento = instrumento
         this.afinacao = afinacao
     }
-    getNomedaCifra() {
-        return musica.nome
+    //cria a cifra no banco refereciando a musica
+    criaCifra(){
+         
+
     }
-    getAfinacao(){
-        return afinacao
+    //adiciona trecho no banco trecho da cifra 
+    addTrecho(){
+
     }
-    getInstrumento(){
-        return instrumento
-    }
+    
 }
