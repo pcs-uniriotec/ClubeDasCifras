@@ -18,6 +18,9 @@ app.post('/form', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
     const cifra = req.body.cifra;
 
+    const Cifra = new cifra(nomeMusica);
+    Cifra.criaCifra;
+
     console.log(nomeMusica);
     console.log(cifra);
 })

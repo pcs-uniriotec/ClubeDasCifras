@@ -3,5 +3,4 @@ class moderador extends usuario{
         super.nome = nome
         super.senha = senha
     }
-    
 }
