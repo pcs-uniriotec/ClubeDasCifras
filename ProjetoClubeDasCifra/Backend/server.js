@@ -48,7 +48,7 @@ app.get('/api/insert/:code', async (req, res) => {
 
     let noCut = code.substr(4, 6);
 
-    const result = await db.execute(`INSERT INTO entries (code,param) VALUES ("${noCut}", "${para}")`);
+    const result = await db.execute(`INSERT INTO entries (musica,autor) VALUES ("${musica}", "${autor}")`);
 //interaçao com o banco de dados
 
     res.send({status: true});

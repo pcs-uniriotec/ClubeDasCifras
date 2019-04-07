@@ -7,58 +7,35 @@
 
 <body>
 
-<div id="layout">
+<div id="formularioMont">
     <table>
         <tr>
-            <th style="width: 200px;">Código</th>
-            <th style="width: 200px;">Hora</th>
-            <th style="width: 200px;">CentroCusto</th>
+            <th style="width: 200px;">musica</th>
+            <th style="width: 200px;">autor</th>
         </tr>
-
-
         <tr v-for="entry in entries">
 
             <td>
-                {{entry.code}}
+                {{entry.musica}}
             </td>
 
             <td>
-                {{entry.datetime.getHours()}}:{{entry.datetime.getMinutes()}}
-
-                {{entry.datetime.getDate()}}/{{entry.datetime.getMonth()}}/{{entry.datetime.getFullYear()}}
-            </td>
-
-            <td>
-                {{entry.prodLine}}
+                {{entry.autor}}
             </td>
 
         </tr>
     </table>
-    <button id="ImpBtn" onclick=" location.href ='/api/export'">importar tabela</button>
 </div>
-
 </body>
 <script>
-
-    function refreshPage(timeoutPeriod)
-    {
-        setTimeout("location.reload(true);",timeoutPeriod);
-    }
-    window.onload = refreshPage(40000);
-
-
-
-
     let vm = new Vue({
-        el: '#layout',
+        el: 'formularioMont',
         data: {
             entries: []
         },
         mounted: async function () {
-            let result = await fetch('/api/list');
+            let result = await fetch('/api/pagCifra');
             var data = await result.json();
-
-            this.entries = data.map(x => ({...x, datetime: new Date(x.datetime)}))
         }
 
 
