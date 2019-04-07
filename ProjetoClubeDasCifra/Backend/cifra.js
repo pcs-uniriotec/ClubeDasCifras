@@ -15,4 +15,5 @@ class cifra{
 
     }*/
     
-}
+  }
+module.exports = cifra

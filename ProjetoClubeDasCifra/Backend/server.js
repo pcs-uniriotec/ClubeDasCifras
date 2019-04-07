@@ -4,6 +4,7 @@ const createDbConnection = require('./database');
 const app = express();
 const port = 8082;
 let db = null;
+let cifraClass = require('./cifra')
 
 
 let path = require('path');
@@ -23,8 +24,8 @@ app.post('/form', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
     const cifra = req.body.cifra;
 
-    const Cifra = new cifra(nomeMusica);
-    Cifra.criaCifra;
+    let cifraObject = new cifraClass(nomeMusica, cifra)
+    cifraObject.criaCifra()
 
     console.log(nomeMusica);
     console.log(cifra);
