@@ -1,2 +1,3 @@
 # ProjetoClubeDasCifra
-Projeto da matéria PCS
+Projeto da matéria PCS - 
+Um site para armazenar e procurar cifras
