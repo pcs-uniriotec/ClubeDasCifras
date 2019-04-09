@@ -1,9 +1,9 @@
 const db = require('./database')
 
 class cifra{
-    constructor(nome, musica, /*instrumento, afinacao*/){
-        this.nome = nome
-        this.musica = musica
+    constructor(musica, cifraMusica, /*instrumento, afinacao*/){
+        this.nomeMusica = musica
+        this.cifraMusica = cifraMusica
         //this.instrumento = instrumento
         //this.afinacao = afinacao
     }

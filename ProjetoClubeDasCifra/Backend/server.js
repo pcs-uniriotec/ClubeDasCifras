@@ -5,10 +5,15 @@ const app = express();
 const port = 8082;
 let cifra = require('./cifra.js')
 let db = null;
-
-
 let path = require('path');
 let caminho = path.join(__dirname, '../src');
+
+app.use(express.static(caminho));
+app.use(express.urlencoded());
+
+
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(caminho + '/html/pagInicial.html');
@@ -18,17 +23,29 @@ app.get('/form', (req, res) => {
     res.sendFile(caminho + '/html/envCifra.html');
 })
 
-app.use(express.urlencoded());
+app.get('/cifra', (req, res) => {
+    res.sendFile(caminho + '/html/pagCifra.html');
+})
+
+app.get('/getCifra', (req, res) => {
+    res.json(Cifra);
+})
+
+
+
+var Cifra = null;
 
 app.post('/form', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
 
-    const Cifra = new cifra(nomeMusica, cifraMusica);
+    Cifra = new cifra(nomeMusica, cifraMusica);
     //Cifra.criaCifra;
+    res.redirect('/cifra'); //redireciona para a página de cifra
 
-    console.log(nomeMusica);
-    console.log(cifraMusica);
+
+    console.log(Cifra.nomeMusica);
+    console.log(Cifra.cifraMusica);
     console.log(Cifra)
 })
 

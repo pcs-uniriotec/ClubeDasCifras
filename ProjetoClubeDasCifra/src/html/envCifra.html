@@ -4,7 +4,7 @@
 
 <h1>Compartilhe sua cifra!</h2>
 
-<form action="/form", method="POST">
+<form target="_self" action="/form", method="POST">
   Autor:<br>
   <!--<div class="dropdown">-->
   <!--<div id="idDropdown" class="dropdown-content">-->
@@ -26,8 +26,10 @@
   Letra com cifra:<br>
   <textarea id="cifra" name="cifra" id="cifra"></textarea>
   <br>
-  <input type="submit" value="Enviar">
+  <input onclick="window.location.href = 'https://facebook.com';" type="submit" value="Enviar">
 </form>
+
+
 
 </body>
 </html>
