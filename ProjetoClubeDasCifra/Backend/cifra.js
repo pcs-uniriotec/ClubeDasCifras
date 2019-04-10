@@ -1,23 +1,19 @@
 const db = require('./database')
+const musica = require('./musica')
 
 class cifra{
-    constructor(musica, cifraMusica, /*instrumento, afinacao*/){
+    constructor(musica, cifraMusica){
         this.nomeMusica = musica
         this.cifraMusica = cifraMusica
-        //this.instrumento = instrumento
-        //this.afinacao = afinacao
+        Musica = new musica(nomeMusica)
     }
     //cria a cifra no banco refereciando a musica
-   /* criaCifra(){
-        if(db.execute(`SELECT * FROM cifra WHERE musica = "${this.nome}"`) == false)
-            db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.musica}")`)
-        else
-
-    }*/
-    //adiciona trecho no banco trecho da cifra
-    //addTrecho(){
-
-   // }
-
+    criaCifra(){
+        if(db.execute(`SELECT * FROM cifra WHERE musica = "${this.nome}"`) == false){
+            Musica.criarMusica()
+            db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${Musica.nome}", "${this.cifraMusica}")`)
+        }else
+        db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${Musica.nome}", "${this.cifraMusica}")`)
+    }
   }
 module.exports = cifra
