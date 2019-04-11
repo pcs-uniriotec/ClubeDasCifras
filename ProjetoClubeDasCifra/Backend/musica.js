@@ -1,11 +1,22 @@
-class musica{
-    constructor(nome){
-        this.nome = nome   
+const busca = require('./busca')
+class Musica{
+
+    constructor (nome){
+
+        this.nome = nome
+        busca.push(this)
+        //criaMusicaBd()
     }
 
     //cria musica no banco musicas
-    criaMusica(){
+    criaMusicaBd(){
         db.execute(`INSERT INTO musica (nome) VALUES ("${this.nome}")`)
     }
+
+    setCifra(cifra){
+        this.cifra = cifra
+    }
+
+
 }
-module.exports = musica
+module.exports = Musica

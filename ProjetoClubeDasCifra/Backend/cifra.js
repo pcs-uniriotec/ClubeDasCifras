@@ -1,19 +1,44 @@
 const db = require('./database')
-const musica = require('./musica')
+const Musica = require('./musica')
+const Busca = require('./busca.js')
 
-class cifra{
-    constructor(musica, cifraMusica){
-        this.nomeMusica = musica
-        this.cifraMusica = cifraMusica
-        Musica = new musica(nomeMusica)
+
+class Cifra{
+
+    constructor(nomeMusica, cifraMusica){
+
+        this.cifra = cifraMusica
+        this.musica
+        console.log('chega aqui')
+        let musicaAchada = Busca.Busca.buscaMusica(nomeMusica);
+        console.log('passouuuuuu')
+
+        if(musicaAchada == Object) {
+            this.musica = musicaAchada
+        }else{
+            this.musica = new Musica(nomeMusica)
+        }
+
+        this.musica.setCifra(this)
+
+        // if(db.execute(`SELECT * FROM musica WHERE nome = "${this.nome}"`) == false){
+        //     Musica = new musica(this.nome)
+        // }
+
+        //criaCifraBd()
     }
     //cria a cifra no banco refereciando a musica
-    criaCifra(){
-        if(db.execute(`SELECT * FROM cifra WHERE musica = "${this.nome}"`) == false){
-            Musica.criarMusica()
-            db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${Musica.nome}", "${this.cifraMusica}")`)
-        }else
-        db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${Musica.nome}", "${this.cifraMusica}")`)
+    criaCifraBd(){
+        db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.cifra}")`)
     }
+
+    static buscaCifra(nomeMusica, cifraMusica, res) {
+        let cifra = new Cifra(nomeMusica, cifraMusica);
+        res.redirect('/cifra'); //redireciona para a página de cifra
+
+        return cifra;
+    }
+
+
   }
-module.exports = cifra
+module.exports = Cifra

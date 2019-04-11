@@ -3,10 +3,11 @@ const express = require('express'); //chamada para o express
 const createDbConnection = require('./database');
 const app = express();
 const port = 8082;
-let cifra = require('./cifra.js')
+let Cifra = require('./cifra.js')
 let db = null;
 let path = require('path');
 let caminho = path.join(__dirname, '../src');
+const Busca = require('./busca.js')
 
 app.use(express.static(caminho));
 app.use(express.urlencoded());
@@ -28,25 +29,38 @@ app.get('/cifra', (req, res) => {
 })
 
 app.get('/getCifra', (req, res) => {
-    res.json(Cifra);
+    res.json(cifra);
 })
 
 
 
-var Cifra = null;
+var cifra = null;
 
 app.post('/form', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
 
-    Cifra = new cifra(nomeMusica, cifraMusica);
+
     //Cifra.criaCifra;
+
+    cifra = Cifra.buscaCifra(nomeMusica, cifraMusica, res);
+
+    console.log(cifra.nomeMusica);
+    console.log(cifra.cifraMusica);
+    console.log(cifra)
+})
+
+app.post('/buscaCifra', (req, res) => {
+    const nomeMusica = req.body.musica
+    let musicaAchada = Busca.Busca.buscaMusica(nomeMusica)
+
+    console.log(musicaAchada)
+
+    cifra = musicaAchada.cifra
+
     res.redirect('/cifra'); //redireciona para a página de cifra
 
 
-    console.log(Cifra.nomeMusica);
-    console.log(Cifra.cifraMusica);
-    console.log(Cifra)
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------

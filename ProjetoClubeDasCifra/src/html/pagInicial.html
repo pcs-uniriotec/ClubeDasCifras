@@ -11,22 +11,30 @@
   <h1> Clube das Cifras </h1>
   
   <p>Toque com a gente!</p>
-  
-  <div>
-    <input type="text" placeholder="procurando algo?">
-  </div>
-  <div id="escMusical" >
-    <select>
-	<option value="estiloMusical1">
-	<option value="estiloMusical2">
-	<option value="estiloMusical3">
+
+
+  <form action="/buscaCifra" method="POST">
+
+    <label for="autor">Procure pelo nome do autor:</label>
+    <br>
+    <input type="text" name="autor" id="autor">
+    <br>
+    <label for="musica">Procure pelo nome da música:</label>
+    <br>
+    <input type="text" name="musica" id="musica">
+    <br>
+    <label for="estilos-musicais">Procure pelo estilo musical:</label>
+    <br>
+    <select name="estilos-musicais" id="estilos-musicais">
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="reggae">Reggae</option>
+      <option value="rap">Rap</option>
     </select>
+    <br>
+    <input type="submit" value="Enviar">
 
-
-    </div>
-  <div id="escMusicos">
-    <input type="text" placeholder ="nome do autor">
-  </div>
+  </form>
 
   <p> Não achou o que procura? Nos envie!</p>
   <a href="compacifraBoxX" class="btn"> clique aqui</a>
