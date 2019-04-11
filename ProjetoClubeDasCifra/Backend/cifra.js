@@ -10,7 +10,7 @@ class Cifra{
         this.cifra = cifraMusica
         this.musica
         console.log('chega aqui')
-        let musicaAchada = Busca.Busca.buscaMusica(nomeMusica);
+        let musicaAchada = Musica.buscaMusica(nomeMusica);
         console.log('passouuuuuu')
 
         if(musicaAchada == Object) {
@@ -32,12 +32,7 @@ class Cifra{
         db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.cifra}")`)
     }
 
-    static buscaCifra(nomeMusica, cifraMusica, res) {
-        let cifra = new Cifra(nomeMusica, cifraMusica);
-        res.redirect('/cifra'); //redireciona para a página de cifra
 
-        return cifra;
-    }
 
 
   }

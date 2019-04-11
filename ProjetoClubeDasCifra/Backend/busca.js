@@ -1,5 +1,7 @@
 const Musica = require("./musica.js")
 
+// var exports = module.exports
+
 var musicas = new Array()
 class Busca {
 
@@ -8,7 +10,8 @@ class Busca {
 
     static buscaMusica(nome) {
         console.log('entra aqui')
-        musicas.forEach(function (value) {
+        console.log(Musica.musicas)
+        Musica.musicas.forEach(function (value) {
             console.log('e aqui? sera q entra? Oi tomas')
             if(value.nome == nome)
                 return value
@@ -20,6 +23,6 @@ class Busca {
 
 
 }
-module.export = Busca
-module.export.var = musicas
+module.exports = Busca
+//module.exports.var = musicas
 

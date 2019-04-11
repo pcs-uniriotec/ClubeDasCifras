@@ -1,10 +1,13 @@
-const busca = require('./busca')
+const Busca = require('./busca')
 class Musica{
 
     constructor (nome){
 
         this.nome = nome
-        busca.push(this)
+        console.log('pre push')
+        Musica.musicas.push(this)
+        console.log(Musica.musicas)
+        console.log('pos push')
         //criaMusicaBd()
     }
 
@@ -17,6 +20,26 @@ class Musica{
         this.cifra = cifra
     }
 
+    static buscaMusica(nome) {
+        let valor
+        console.log('entra aqui')
+        console.log(Musica.musicas)
+        Musica.musicas.forEach(function (value) {
+            console.log('e aqui? sera q entra? Oi tomas')
+            if(value.nome == nome) {
+                console.log("Achei a musica")
+                console.log(value)
+                 valor = value;
+
+            }
+
+        })
+        return valor;
+
+    }
+
 
 }
+
+Musica.musicas = []
 module.exports = Musica

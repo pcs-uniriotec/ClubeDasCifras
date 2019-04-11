@@ -8,6 +8,7 @@ let db = null;
 let path = require('path');
 let caminho = path.join(__dirname, '../src');
 const Busca = require('./busca.js')
+const Musica = require('./musica')
 
 app.use(express.static(caminho));
 app.use(express.urlencoded());
@@ -29,34 +30,36 @@ app.get('/cifra', (req, res) => {
 })
 
 app.get('/getCifra', (req, res) => {
-    res.json(cifra);
+    res.json({'nome': musica.nome, 'cifra': musica.cifra.cifra});
 })
 
 
 
 var cifra = null;
+var musica = null;
 
 app.post('/form', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
 
-
+    cifra = new Cifra(nomeMusica, cifraMusica);
+    musica = cifra.musica
     //Cifra.criaCifra;
 
-    cifra = Cifra.buscaCifra(nomeMusica, cifraMusica, res);
-
-    console.log(cifra.nomeMusica);
-    console.log(cifra.cifraMusica);
+    console.log(cifra.musica.nome);
     console.log(cifra)
+    res.redirect('/cifra'); //redireciona para a página de cifra
+
+
 })
 
 app.post('/buscaCifra', (req, res) => {
     const nomeMusica = req.body.musica
-    let musicaAchada = Busca.Busca.buscaMusica(nomeMusica)
+    musica = Musica.buscaMusica(nomeMusica);
+    console.log('Entao so pode ser aqui')
+    console.log(musica)
 
-    console.log(musicaAchada)
 
-    cifra = musicaAchada.cifra
 
     res.redirect('/cifra'); //redireciona para a página de cifra
 
