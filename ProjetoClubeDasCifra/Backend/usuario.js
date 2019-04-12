@@ -9,7 +9,7 @@ class Usuario{
     }
 
     setCifra(cifra) {
-        cifras.push(cifra);
+        this.cifras.push(cifra);
     }
 
     static addUsuario(usuario) {

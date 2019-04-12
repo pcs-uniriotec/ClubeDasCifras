@@ -1,23 +1,64 @@
 (function(){
-    var usuario = null
-    const elementoLogin = $('#login')
-    const elementoUsuario = $('#usuario')
-    const botaoDeslogar = $(':button[name="deslogar"]')
+        var usuarioGlobal = null
+        var teste = 2
+        const elementoLogin = $('#login')
+        const elementoUsuario = $('#usuario')
+        const botaoDeslogar = $(':button[name="deslogar"]')
+        const botaoCriarCifra = $(':button[name="cria-cifra"]')
 
-    function verificaUsuario() {
+
+
+    function pegaUsuario() {
+            var dadoRetorno = null
+        $.ajax({
+            url: '/getUsuario',
+            type: 'GET',
+            dataType: 'json',
+            success: (data) => {
+
+                dadoRetorno = data
+                setUser(data)
+                console.log('to no front')
+                console.log(data)
+                console.log(usuarioGlobal)
+                verificaUsuario()
+            }
+            //console.log("ajax")
+            // console.log("fora do ajax")
+            // console.log(usuarioGlobal)
+        })
+
+    }
+
+    function setUser(data) {
+        console.log('To no set User')
+        usuarioGlobal = data
+        console.log(usuarioGlobal)
+    }
+
+    botaoDeslogar.click(function(){
+        botaoDeslogar.addClass('invisible')
+        setUser(null)
+        verificaUsuario()
+    })
+
+        function verificaUsuario() {
+        console.log("verifica usuario")
+        console.log(usuarioGlobal)
 
         if(!elementoLogin.hasClass('invisible')){
+            console.log(teste)
 
-            if(usuario !== null) {
+            if(usuarioGlobal !== undefined && usuarioGlobal !== null) {
 
                 elementoLogin.addClass('invisible')
                 botaoDeslogar.removeClass('invisible')
                 $('#cadastro').addClass('invisible')
                 $('#enviar-cifra').removeClass('invisible')
-                elementoUsuario.html('user: '+usuario.usuario)
+                elementoUsuario.html('user: '+usuarioGlobal.usuario)
             }
         }else {
-            if(usuario == null) {
+            if(usuarioGlobal == null) {
                 elementoLogin.removeClass('invisible')
                 $('#cadastro').removeClass('invisible')
                 $('#enviar-cifra').addClass('invisible')
@@ -28,14 +69,13 @@
 
 
     $(document).ready(function() {
+        pegaUsuario()
+        console.log("Esse aqui ó")
+        console.log(usuarioGlobal)
         verificaUsuario()
     })
 
-    function setUser(data) {
-        console.log('To no set User')
-        console.log(data)
-        usuario = data
-    }
+
 
 
     $(':button[name="login"]').click(function() {
@@ -44,21 +84,39 @@
         let user = $('input[name="usuario"]').val()
         let password = $('input[name="password"]').val()
 
-
         $.post("/login", {usuario: user, senha: password}, function(data) {
-            usuario = data
-            console.log(usuario)
+            usuarioGlobal = data
+            console.log(usuarioGlobal)
             setUser(data)
             verificaUsuario()
         })
-        console.log(usuario)
+
+        console.log(usuarioGlobal)
         console.log("chega aqui")
     })
 
-    botaoDeslogar.click(function(){
-        botaoDeslogar.addClass('invisible')
-        setUser(null)
-        verificaUsuario()
+
+
+
+
+    botaoCriarCifra.click(function() {
+        console.log("Entraaaaaaa")
+        let musica = $('input[name="nomeMusica"]').val()
+        let cifraRecebida = $('#cifra').val()
+
+        console.log(musica)
+        console.log(cifraRecebida)
+
+        $.post("/enviarCifra", {nomeMusica: musica, cifra: cifraRecebida, user: usuarioGlobal}, function(data) {
+            window.location = data
+        })
+        // $.post("/login", {usuario: user, senha: password}, function(data) {
+        //     usuario = data
+        //     console.log(usuario)
+        //     setUser(data)
+        //     verificaUsuario()
+        // })
+
     })
 
 

@@ -14,7 +14,7 @@ const bodyParser = require('body-parser')
 
 var cifra = null;
 var musica = null;
-var usuario = null;
+var usuarioBackend = null;
 
 app.use(bodyParser.json());
 app.use(express.static(caminho));
@@ -44,20 +44,31 @@ app.get('/getCifra', (req, res) => {
     res.json({'nome': musica.nome, 'cifra': musica.cifra.cifra});
 })
 
+app.get('/getUsuario', (req, res) => [
+    res.json(usuarioBackend)
+])
 
 
 
 
-app.post('/form', (req, res) => {
+
+app.post('/enviarCifra', (req, res) => {
+    console.log("Entra aqui")
     const nomeMusica = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
+    // usuario = req.body.user;
+    console.log('antes de usuario')
+    //console.log(usuario)
 
     cifra = new Cifra(nomeMusica, cifraMusica);
+    usuarioBackend.setCifra(cifra);
     musica = cifra.musica
     //Cifra.criaCifra;
 
     console.log(cifra.musica.nome);
     console.log(cifra)
+    console.log(usuarioBackend)
+    console.log("So falta redirecionar")
     res.redirect('/cifra'); //redireciona para a página de cifra
 
 
@@ -78,11 +89,14 @@ app.post('/registro', (req, res) => {
     let senha = req.body.password
     let email = req.body.email
 
-    usuario = new Usuario(nome, usuario, senha, email)
-    res.redirect('/');
+    usuarioBackend = new Usuario(nome, usuario, senha, email)
+    console.log(usuarioBackend)
+    res.redirect('/')
 })
 
 app.post('/login', (req, res) => {
+    console.log("bem aqui")
+    console.log(usuarioBackend)
     let usuario = req.body.usuario
     let senha = req.body.senha
     console.log(usuario)
