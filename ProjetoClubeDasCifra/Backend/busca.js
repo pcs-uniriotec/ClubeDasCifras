@@ -12,7 +12,7 @@ class Busca {
         console.log('entra aqui')
         console.log(Musica.musicas)
         Musica.musicas.forEach(function (value) {
-            console.log('e aqui? sera q entra? Oi tomas')
+            console.log('e aqui? sera q entra?')
             if(value.nome == nome)
                 return value
 
