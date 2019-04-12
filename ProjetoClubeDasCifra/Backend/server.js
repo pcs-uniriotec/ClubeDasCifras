@@ -1,15 +1,22 @@
 const express = require('express'); //chamada para o express
 
 const createDbConnection = require('./database');
+let Cifra = require('./cifra.js')
+const Usuario = require('./usuario.js')
 const app = express();
 const port = 8082;
-let Cifra = require('./cifra.js')
 let db = null;
 let path = require('path');
 let caminho = path.join(__dirname, '../src');
 const Busca = require('./busca.js')
 const Musica = require('./musica')
+const bodyParser = require('body-parser')
 
+var cifra = null;
+var musica = null;
+var usuario = null;
+
+app.use(bodyParser.json());
 app.use(express.static(caminho));
 app.use(express.urlencoded());
 
@@ -21,12 +28,16 @@ app.get('/', (req, res) => {
     res.sendFile(caminho + '/html/pagInicial.html');
 })
 
-app.get('/form', (req, res) => {
+app.get('/enviarCifra', (req, res) => {
     res.sendFile(caminho + '/html/envCifra.html');
 })
 
 app.get('/cifra', (req, res) => {
     res.sendFile(caminho + '/html/pagCifra.html');
+})
+
+app.get('/cadastro', (req, res) => {
+    res.sendFile(caminho + '/html/cadastro.html')
 })
 
 app.get('/getCifra', (req, res) => {
@@ -35,8 +46,7 @@ app.get('/getCifra', (req, res) => {
 
 
 
-var cifra = null;
-var musica = null;
+
 
 app.post('/form', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
@@ -59,10 +69,27 @@ app.post('/buscaCifra', (req, res) => {
     console.log('Entao so pode ser aqui')
     console.log(musica)
 
-
-
     res.redirect('/cifra'); //redireciona para a página de cifra
+})
 
+app.post('/registro', (req, res) => {
+    let nome = req.body.nome
+    let usuario = req.body.username
+    let senha = req.body.password
+    let email = req.body.email
+
+    usuario = new Usuario(nome, usuario, senha, email)
+    res.redirect('/');
+})
+
+app.post('/login', (req, res) => {
+    let usuario = req.body.usuario
+    let senha = req.body.senha
+    console.log(usuario)
+
+    usuario = Usuario.buscaUsuario(usuario, senha)
+
+    res.json(usuario).redirect('/')
 
 })
 

@@ -4,13 +4,38 @@
 <head>
 <meta charset="UTF-8">
   <title>clube Das Cifras</title>
+  <style>
+    #login {
+      float: right;
+    }
+    .invisible {
+      visibility: hidden;
+    }
+    .usuario {
+      float: right;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="login">
+
+      <input type="text" name="usuario" placeholder="usuário" required>
+      <input type="password" name="password" placeholder="senha" required>
+      <button name="login">Logar</button>
+
+  </div>
+
+  <div class="usuario">
+    <p id="usuario"></p>
+    <button name="deslogar" class="invisible">Deslogar</button>
+  </div>
 
   <h1> Clube das Cifras </h1>
   
   <p>Toque com a gente!</p>
+
+  <a href="/enviarCifra" id="enviar-cifra" class="invisible">Envie uma cifra</a>
 
 
   <form action="/buscaCifra" method="POST">
@@ -32,12 +57,17 @@
       <option value="rap">Rap</option>
     </select>
     <br>
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Buscar">
 
   </form>
 
+  <a href="/cadastro" id="cadastro">Clique aqui para se cadastrar</a>
+
   <p> Não achou o que procura? Nos envie!</p>
   <a href="compacifraBoxX" class="btn"> clique aqui</a>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/usuario.js"></script>
 
 </body>
 </html>
