@@ -1,14 +1,13 @@
 const db = require('./database')
 const Musica = require('./musica')
-const Busca = require('./busca.js')
-
 
 class Cifra{
 
-    constructor(nomeMusica, cifraMusica){
+    constructor(nomeMusica, cifraMusica/*, usuarioAutor*/){
 
         this.cifra = cifraMusica
-        this.musica
+        //this.autor = usuarioAutor
+
         console.log('chega aqui')
         let musicaAchada = Musica.buscaMusica(nomeMusica);
         console.log('passouuuuuu')
@@ -31,9 +30,5 @@ class Cifra{
     criaCifraBd(){
         db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.cifra}")`)
     }
-
-
-
-
   }
 module.exports = Cifra
