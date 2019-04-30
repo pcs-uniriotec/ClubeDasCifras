@@ -1,4 +1,3 @@
-const Busca = require('./busca')
 class Musica{
     musicas = []
 
@@ -6,7 +5,7 @@ class Musica{
 
         this.nome = nome
         console.log('pre push')
-        Musica.musicas.push(this)
+        musicas.push(this)
         console.log(musicas)
         console.log('pos push')
         //criaMusicaBd()
@@ -25,7 +24,7 @@ class Musica{
 
         console.log('entra aqui')
         console.log(musicas)
-        
+
         let musica = musicas.find(mus => mus.nome === nome)
 
         return musica;
