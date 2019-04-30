@@ -1,5 +1,5 @@
 class Musica{
-    musicas = []
+    static musicas = []
 
     constructor (nome){
 
