@@ -7,11 +7,9 @@ class Cifra{
 
         this.cifra = cifraMusica
         //this.autor = usuarioAutor
-        this.media = 5
+        //this.media = 5
 
-        console.log('chega aqui')
         this.musicaAchada = Musica.buscaMusica(nomeMusica);
-        console.log('passouuuuuu')
 
         if(musicaAchada == Object) {
             this.musica = musicaAchada
@@ -40,5 +38,13 @@ class Cifra{
     media(){
         return media
     }
+
+    static buscaMusica(nomeMusica){
+        let musica
+        musica = musicas.find(mus => mus.nome === nomeMusica)
+        return musica
+    }
+
   }
+
 module.exports = Cifra
