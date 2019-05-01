@@ -7,10 +7,9 @@ class Cifra{
 
         this.cifra = cifraMusica
         //this.autor = usuarioAutor
-        this.media = 0
 
         console.log('chega aqui')
-        this.musicaAchada = Musica.buscaMusica(nomeMusica);
+        let musicaAchada = Musica.buscaMusica(nomeMusica);
         console.log('passouuuuuu')
 
         if(musicaAchada == Object) {
@@ -30,15 +29,6 @@ class Cifra{
     //cria a cifra no banco refereciando a musica
     criaCifraBd(){
         db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.cifra}")`)
-    }
-
-    media(nota){
-        this.media = (media + nota)/2
-        return media
-    }
-
-    media(){
-        return media
     }
   }
 module.exports = Cifra

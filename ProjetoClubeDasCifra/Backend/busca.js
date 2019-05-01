@@ -1,18 +1,16 @@
-const Cifra = 
+const Musica = require("./musica.js")
 class Busca {
-    static musicas = []
 
     constructor() {
-
     }
 
     static buscaMusica(nome) {
-        console.log(musicas)
-        findMusica = musicas.find(mus => mus.nome === nome)
-        if(typeof(findMusica) == "object" )
-        return findMusica
-        else
-        return cifra = new Cifra(nomeMusica = null, cifraMusica = "Cifra não encontrada");
+        console.log(Musica.musicas)
+        Musica.musicas.forEach(function (value) {
+            if(value.nome == nome)
+                return value
+        })
+        return null
     }
 }
 module.exports = Busca
