@@ -7,7 +7,7 @@ class Cifra{
 
         this.cifra = cifraMusica
         //this.autor = usuarioAutor
-        this.media = 5
+        this.media = 0
 
         console.log('chega aqui')
         this.musicaAchada = Musica.buscaMusica(nomeMusica);
