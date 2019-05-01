@@ -1,8 +1,8 @@
-const Busca = require('./busca')
 class Musica{
     constructor (nome){
         this.nome = nome
         Musica.musicas.push(this)
+        this.cifras = []
         //criaMusicaBd()
     }
 
@@ -11,9 +11,16 @@ class Musica{
         db.execute(`INSERT INTO musica (nome) VALUES ("${this.nome}")`)
     }
 
+    
     setCifra(cifra){
         this.cifra = cifra
+        addCifra(cifra)
     }
+
+    addCifra(cifra){
+        this.cifras = cifra
+    }
+
 
     static buscaMusica(nome) {
         let musica = Musica.musicas.find(mus => mus.nome === nome)
