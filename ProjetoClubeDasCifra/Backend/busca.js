@@ -12,7 +12,7 @@ class Busca {
         if(typeof(findMusica) == "object" )
         return findMusica
         else
-        return cifra = new Cifra(nomeMusica = null, cifraMusica = "Cifra não   encontrada");
+        return cifra = new Cifra(nomeMusica = null, cifraMusica = "Cifra não encontrada");
     }
 }
 module.exports = Busca
