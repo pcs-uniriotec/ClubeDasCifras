@@ -1,111 +1,81 @@
 (function(){
-        var usuarioGlobal = null
-        var teste = 2
-        const elementoLogin = $('#login')
-        const elementoUsuario = $('#usuario')
-        const botaoDeslogar = $(':button[name="deslogar"]')
-        const botaoCriarCifra = $(':button[name="cria-cifra"]')
+    var usuario = null
+    const elementoLogin = $('#login')
+    const elementoUsuario = $('#usuario')
+    const botaoDeslogar = $(':button[name="deslogar"]')
+    const botaoCriarCifra = $(':button[name="cria-cifra"]')
 
 
 
-    function pegaUsuario() {
-            var dadoRetorno = null
-        $.ajax({
-            url: '/getUsuario',
-            type: 'GET',
-            dataType: 'json',
-            success: (data) => {
+    $(document).ready(function() {      //roda quando a pagina termina de carregar
+        verificaUsuario()
+    })
 
-                dadoRetorno = data
-                setUser(data)
-                console.log('to no front')
-                console.log(data)
-                console.log(usuarioGlobal)
-                verificaUsuario()
+
+    function pegaUsuario() {         //busca objeto usuario no backend
+        usuario = JSON.parse(localStorage.getItem('usuario'))
+    }
+
+
+    function verificaUsuario() {                                     //verifica se usuario esta logado e conforme for faz alterações na página
+        pegaUsuario()
+
+        if(!elementoLogin.hasClass('invisible')){
+
+            if(usuario !== undefined && usuario !== null) {  //entra no if se usuario tiver logado
+                elementoLogin.addClass('invisible')                      //torna o login invisivel, pois usuario ja logou
+                botaoDeslogar.removeClass('invisible')                   //torna visivel botao de deslogar
+                $('#cadastro').addClass('invisible')                     //torna invisivel link para cadastro
+                $('#enviar-cifra').removeClass('invisible')              //torna visivel link para enviar cifra
+                elementoUsuario.html('user: '+ usuario.usuario)     //define conteudo de elemento html com nome de usuario
             }
-            //console.log("ajax")
-            // console.log("fora do ajax")
-            // console.log(usuarioGlobal)
-        })
-
+        }else {
+            if(usuario == null) {                                  //entra no if se usuario n tiver logado
+                elementoLogin.removeClass('invisible')                   //torna visivel o login
+                $('#cadastro').removeClass('invisible')                  //torna visivel link para o cadastro
+                $('#enviar-cifra').addClass('invisible')                 //torna invisivel link para enviar cifra
+                elementoUsuario.html('')                                 //elimina conteudo de elemento hmtl q diz nome do usuario
+            }
+        }
     }
 
-    function setUser(data) {
-        console.log('To no set User')
-        usuarioGlobal = data
-        console.log(usuarioGlobal)
-    }
-
-    botaoDeslogar.click(function(){
+    botaoDeslogar.click(function(){              //roda quando botao de deslogar é clicado
         botaoDeslogar.addClass('invisible')
         setUser(null)
         verificaUsuario()
     })
 
-        function verificaUsuario() {
-        console.log("verifica usuario")
-        console.log(usuarioGlobal)
 
-        if(!elementoLogin.hasClass('invisible')){
-            console.log(teste)
-
-            if(usuarioGlobal !== undefined && usuarioGlobal !== null) {
-
-                elementoLogin.addClass('invisible')
-                botaoDeslogar.removeClass('invisible')
-                $('#cadastro').addClass('invisible')
-                $('#enviar-cifra').removeClass('invisible')
-                elementoUsuario.html('user: '+usuarioGlobal.usuario)
-            }
-        }else {
-            if(usuarioGlobal == null) {
-                elementoLogin.removeClass('invisible')
-                $('#cadastro').removeClass('invisible')
-                $('#enviar-cifra').addClass('invisible')
-                elementoUsuario.html('')
-            }
-        }
+    function setUser(data) {
+        localStorage.setItem('usuario', JSON.stringify(data))
     }
 
 
-    $(document).ready(function() {
-        pegaUsuario()
-        console.log("Esse aqui ó")
-        console.log(usuarioGlobal)
-        verificaUsuario()
-    })
 
 
+    $(':button[name="login"]').click(function() {                           //roda quando botao de login é clicado
 
+        let user = $('input[name="usuario"]').val()                         //pega nome do usuario atraves do input de login
+        let password = $('input[name="password"]').val()                    //pega senha do usuario atraves do input de login
 
-    $(':button[name="login"]').click(function() {
-        console.log('entra')
+        // console.log(JSON.parse(localStorage.getItem('usuario')))
+        // localStorage.setItem('nome', data.nome)
+        // localStorage.setItem('usuario', data.usuario)
+        // localStorage.setItem('email', data.email)
+        //setUser(data)
+        // verificaUsuario()
 
-        let user = $('input[name="usuario"]').val()
-        let password = $('input[name="password"]').val()
-
-        $.post("/login", {usuario: user, senha: password}, function(data) {
-            usuarioGlobal = data
-            console.log(usuarioGlobal)
+        $.post("/login", {usuario: user, senha: password}, function(data) { //busca usuario com os respectivos nome e senha recebidos no input
             setUser(data)
             verificaUsuario()
         })
-
-        console.log(usuarioGlobal)
-        console.log("chega aqui")
     })
-
-
 
 
 
     botaoCriarCifra.click(function() {
-        console.log("Entraaaaaaa")
-        let musica = $('input[name="nomeMusica"]').val()
-        let cifraRecebida = $('#cifra').val()
-
-        console.log(musica)
-        console.log(cifraRecebida)
+        let musica = $('input[name="nomeMusica"]').val()      //recebe por input nome da musica
+        let cifraRecebida = $('#cifra').val()                 //recebe cifra pelo input de textarea
 
         $.post("/enviarCifra", {nomeMusica: musica, cifra: cifraRecebida, user: usuarioGlobal}, function(data) {
             window.location = data

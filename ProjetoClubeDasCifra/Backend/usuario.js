@@ -19,6 +19,7 @@ class Usuario{
     static buscaUsuario(usuario, senha) {
         return Usuario.usuarios.find(usu => usu.usuario == usuario && usu.senha == senha)
     }
+
 }
 
 Usuario.usuarios = []
