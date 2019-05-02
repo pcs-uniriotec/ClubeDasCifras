@@ -45,7 +45,9 @@ app.get('/getCifra', (req, res) => {
 })
 
 app.get('/getUsuario', (req, res) => [
-    res.json(usuarioBackend)
+    //res.json(usuarioBackend)
+    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario, 'email': usuarioBackend.email})
+
 ])
 
 
@@ -53,22 +55,14 @@ app.get('/getUsuario', (req, res) => [
 
 
 app.post('/enviarCifra', (req, res) => {
-    console.log("Entra aqui")
     const nomeMusica = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
     // usuario = req.body.user;
-    console.log('antes de usuario')
-    //console.log(usuario)
 
     cifra = new Cifra(nomeMusica, cifraMusica);
     usuarioBackend.setCifra(cifra);
     musica = cifra.musica
     //Cifra.criaCifra;
-
-    console.log(cifra.musica.nome);
-    console.log(cifra)
-    console.log(usuarioBackend)
-    console.log("So falta redirecionar")
     res.redirect('/cifra'); //redireciona para a página de cifra
 
 
@@ -101,9 +95,9 @@ app.post('/login', (req, res) => {
     let senha = req.body.senha
     console.log(usuario)
 
-    usuario = Usuario.buscaUsuario(usuario, senha)
+    usuarioBackend = Usuario.buscaUsuario(usuario, senha)
 
-    res.json(usuario).redirect('/')
+    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password, 'email': usuarioBackend.email}).redirect('/')
 
 })
 
