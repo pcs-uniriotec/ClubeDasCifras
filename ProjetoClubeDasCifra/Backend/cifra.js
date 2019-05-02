@@ -7,8 +7,8 @@ class Cifra{
         this.autor = autor
         this.verificaExistenciaMusica(nomeMusica)
         this.musica.setCifra(this)
-        this.total
-        this.avaliacoes = {}
+        this.total = parseInt('0')
+        this.avaliacoes = []
         this.comentarios = []
 
         // if(db.execute(`SELECT * FROM musica WHERE nome = "${this.nome}"`) == false){
@@ -33,20 +33,40 @@ class Cifra{
         }
     }
 
-    // mediaCifra(usuario, nota){
-    //     let avaliacao = avaliacoes.find(user => user.nome === usuario.nome)
-    //     if(avaliacao !== null && avaliacao !== undefined) {
-    //         let nota =
-    //     }
-    //     else{
-    //         this.avaliacoes.push({usuario.nome: nota})
-    //         this.total += nota
-    //     }
-    //     calculaMedia(total, avaliacoes.length())
-    // }
+    registraAvaliacoes(usuario, nota){
+        //let avaliacao = avaliacoes.find(user => user.nome === usuario.nome)
+        console.log(usuario)
+        console.log(this.avaliacoes[usuario])
+        let avaliacao = this.avaliacoes[usuario]
+        console.log(this.avaliacoes)
+        console.log("AQUI È AVALIACAO "+ avaliacao)
+        if(avaliacao !== null && avaliacao !== undefined) {
+            console.log("AQUI ENTRAAAA")
+            this.avaliacoes[usuario] = nota
+             nota = avaliacao - nota
+            console.log(nota)
+            this.total -= nota
+        }
+        else{
+            console.log("AQUI ENTRA PRIMEIRO")
+            console.log(this.avaliacoes)
+            this.avaliacoes[usuario]= nota
+            console.log(this.avaliacoes)
+            console.log(nota)
+            this.total = parseInt(this.total) + parseInt(nota)
+            console.log("TOTALLL")
+            console.log("Total"+ this.total)
+        }
 
-    calculaMedia(total, avaliacoes){
-        return total/avaliacoes
+    }
+
+    calculaMedia(){
+        console.log("AQUI Ó, TOTAL")
+        console.log(this.total)
+        console.log(this.avaliacoes)
+        console.log(this.avaliacoes.length)
+        console.log(Object.keys(this.avaliacoes).length)
+        return this.total/Object.keys(this.avaliacoes).length
     }
 
     addComentario(comentario){

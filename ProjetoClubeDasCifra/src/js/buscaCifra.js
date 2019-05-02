@@ -22,9 +22,9 @@
     let musica = localStorage.getItem('cifra')
     console.log(musica)
     $.post("/buscaCifra", {musica: musica}, function(data) {
-        console.log("Entra aqui")
         $('#nomeMusica').html(data.nome)
         $('#cifra').html(data.cifra)
+        $('#nota').html(data.media)
     })
 
     });

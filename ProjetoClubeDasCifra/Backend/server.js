@@ -39,14 +39,14 @@ app.get('/cadastro', (req, res) => {
     res.sendFile(caminho + '/html/cadastro.html')
 })
 
-app.get('/getCifra', (req, res) => {
-    console.log("Entra nesse get aqui")
-    let nomeMusica = req.body.musica
-    console.log(nomeMusica)
-    musica = Musica.buscaMusica(nomeMusica)
-    console.log(musica)
-    res.json({'nome': musica.nome, 'cifra': musica.cifra.cifra});
-})
+// app.get('/getCifra', (req, res) => {
+//     console.log("Entra nesse get aqui")
+//     let nomeMusica = req.body.musica
+//     console.log(nomeMusica)
+//     musica = Musica.buscaMusica(nomeMusica)
+//     console.log(musica)
+//     res.json({'nome': musica.nome, 'cifra': musica.cifra.cifra});
+// })
 
 app.get('/getUsuario', (req, res) => [
     //res.json(usuarioBackend)
@@ -65,8 +65,6 @@ app.post('/enviarCifra', (req, res) => {
     // usuario = req.body.user;
 
     cifra = new Cifra(nomeMusica, cifraMusica, autor);
-    console.log("Logo aqui")
-    console.log(usuarioBackend)
     usuarioBackend.setCifra(cifra);
     musica = cifra.musica
     //Cifra.criaCifra;
@@ -78,7 +76,7 @@ app.post('/buscaCifra', (req, res) => {
     musica = Musica.buscaMusica(nomeMusica);
     console.log('Entao so pode ser aqui')
     console.log(musica)
-    res.json({nome: musica.nome, cifra: musica.cifra.cifra})
+    res.json({nome: musica.nome, cifra: musica.cifra.cifra, media: musica.cifra.calculaMedia()})
     // res.redirect('/cifra'); //redireciona para a página de cifra
 })
 
@@ -89,7 +87,6 @@ app.post('/registro', (req, res) => {
     let email = req.body.email
 
     usuarioBackend = new Usuario(nome, usuario, senha, email)
-    console.log(usuarioBackend)
     res.redirect('/')
 })
 
@@ -107,7 +104,14 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/registraNota', (req, res) => {
+    let usuarioNome = req.body.usuarioNome
+    let cifraNome = req.body.cifraNome
+    let nota = req.body.nota
 
+    usuario = Usuario.buscaUsuario(usuarioNome)
+    musica = Musica.buscaMusica(cifraNome)
+
+    musica.cifra.registraAvaliacoes(usuarioNome, nota)
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------
