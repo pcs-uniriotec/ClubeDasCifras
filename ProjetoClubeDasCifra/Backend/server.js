@@ -76,7 +76,7 @@ app.post('/buscaCifra', (req, res) => {
     musica = Musica.buscaMusica(nomeMusica);
     console.log('Entao so pode ser aqui')
     console.log(musica)
-    res.json({nome: musica.nome, cifra: musica.cifra.cifra, media: musica.cifra.calculaMedia()})
+    res.json({nome: musica.nome, cifra: musica.cifra.cifra, media: musica.cifra.calculaMedia(), comentarios: musica.cifra.getComentarios()})
     // res.redirect('/cifra'); //redireciona para a página de cifra
 })
 
@@ -112,6 +112,17 @@ app.post('/registraNota', (req, res) => {
     musica = Musica.buscaMusica(cifraNome)
 
     musica.cifra.registraAvaliacoes(usuarioNome, nota)
+})
+
+app.post('/registraComentario', (req, res) => {
+    let usuarioNome = req.body.usuarioNome
+    let cifraNome = req.body.cifraNome
+    let comentario = req.body.comentario
+
+    musica = Musica.buscaMusica(cifraNome)
+    musica.cifra.addComentario(usuarioNome, comentario)
+    console.log("COMENTARIOSSSS")
+    console.log(musica.cifra.getComentarios())
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------

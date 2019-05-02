@@ -69,8 +69,12 @@ class Cifra{
         return this.total/Object.keys(this.avaliacoes).length
     }
 
-    addComentario(comentario){
-        this.comentarios.push(comentario)
+    addComentario(usuarioNome, comentario){
+        this.comentarios.push({usuarioNome: usuarioNome, comentario: comentario})
+    }
+
+    getComentarios() {
+        return this.comentarios
     }
 
     retornaComentarios(){

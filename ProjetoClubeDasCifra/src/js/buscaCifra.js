@@ -25,9 +25,30 @@
         $('#nomeMusica').html(data.nome)
         $('#cifra').html(data.cifra)
         $('#nota').html(data.media)
+
+        console.log(data.comentarios)
+
+        $.each(data.comentarios, function(i) {
+            montaComentario(this)
+        })
+
     })
 
     });
+
+    function montaComentario(comentario) {
+        const coment = $(`
+                            <h2>${comentario.usuarioNome}</h2>
+                            <br>
+                            <p>${comentario.comentario}</p>
+                        `)
+
+        $(`
+                <h4>${comentario.usuarioNome} comentou:</h4>
+                <br>
+                <p>${comentario.comentario}</p>
+          `).appendTo($('#espaco-comentarios'))
+    }
 
 })();
 

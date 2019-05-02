@@ -2,7 +2,7 @@
     const nota = $('#nota-output-id')
     const notaInput = $('#nota-input-id')
     var usuario
-    var cifra
+    var cifraNome
 
 
     function pegaUsuario() {         //busca objeto usuario no backend
@@ -25,6 +25,23 @@
         $.post("/registraNota", {usuarioNome: usuario.nome, cifraNome: cifraNome, nota: notaInput.val()}, function(data){
 
         })
+    })
+
+    $(':button[name="cria-comentario"]').click(function(e) {
+        e.preventDefault()
+        usuario = pegaUsuario()
+        cifraNome = pegaCifra()
+        let comentario = $('#comentario-input').val()
+
+        console.log(usuario.nome)
+        console.log(cifraNome)
+        console.log(comentario)
+
+        if(comentario !== null && comentario !== undefined) {
+            $.post("/registraComentario", {usuarioNome: usuario.nome, cifraNome: cifraNome, comentario: comentario}, function(data) {
+
+            })
+        }
     })
 
 
