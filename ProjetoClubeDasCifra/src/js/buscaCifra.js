@@ -1,5 +1,21 @@
 (function(){
 
+    const botaoFavorita = $(':button[name="favorita-cifra"]')
+    var usuario
+
+
+    function setUser(data) {
+        localStorage.setItem('usuario', JSON.stringify(data))
+    }
+
+    function pegaUsuario() {         //busca objeto usuario no backend
+        return JSON.parse(localStorage.getItem('usuario'))
+    }
+
+    function pegaCifra() {
+        return localStorage.getItem('cifra')
+    }
+
     $(document).ready(function() {
 
     //     $.ajax({
@@ -18,6 +34,14 @@
     //     })
     //
 
+        usuario = pegaUsuario()
+
+        console.log(usuario)
+
+        if(usuario.favoritas.find(cifra => cifra === pegaCifra()) !== null && usuario.favoritas.find(cifra => cifra === cifra) !== undefined) {
+            botaoFavorita.addClass('invisible')
+        }
+
 
     let musica = localStorage.getItem('cifra')
     console.log(musica)
@@ -26,7 +50,8 @@
         $('#cifra').html(data.cifra)
         $('#nota').html(data.media)
 
-        console.log(data.comentarios)
+        console.log(data.nome)
+        console.log(data.cifra)
 
         $.each(data.comentarios, function(i) {
             montaComentario(this)

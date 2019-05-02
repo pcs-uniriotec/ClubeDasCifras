@@ -87,6 +87,8 @@ app.post('/registro', (req, res) => {
     let email = req.body.email
 
     usuarioBackend = new Usuario(nome, usuario, senha, email)
+    console.log("AQUIIIII")
+    console.log(usuarioBackend)
     res.redirect('/')
 })
 
@@ -99,7 +101,8 @@ app.post('/login', (req, res) => {
 
     usuarioBackend = Usuario.verificaUsuario(usuario, senha)
 
-    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password, 'email': usuarioBackend.email}).redirect('/')
+    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
+            'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas()}).redirect('/')
 
 })
 
@@ -123,6 +126,21 @@ app.post('/registraComentario', (req, res) => {
     musica.cifra.addComentario(usuarioNome, comentario)
     console.log("COMENTARIOSSSS")
     console.log(musica.cifra.getComentarios())
+})
+
+app.post('/favoritarCifra', (req, res) => {
+    let usuarioNome = req.body.usuarioNome
+    let cifraNome = req.body.cifraNome
+    console.log("Entrou no FAVORITAR CIFRA")
+    usuario = Usuario.buscaUsuario(usuarioNome)
+
+    usuario.addFavorita(cifraNome)
+
+    console.log("E o GRAND FINALE")
+    console.log(usuario)
+
+    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
+        'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas()})
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------

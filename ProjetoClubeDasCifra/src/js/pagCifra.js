@@ -1,9 +1,14 @@
 (function(){
     const nota = $('#nota-output-id')
     const notaInput = $('#nota-input-id')
+    const botaoFavorita = $(':button[name="favorita-cifra"]')
     var usuario
     var cifraNome
 
+
+    function setUser(data) {
+        localStorage.setItem('usuario', JSON.stringify(data))
+    }
 
     function pegaUsuario() {         //busca objeto usuario no backend
         return JSON.parse(localStorage.getItem('usuario'))
@@ -42,6 +47,16 @@
 
             })
         }
+    })
+
+    $(botaoFavorita).click(function(e) {
+        e.preventDefault()
+        botaoFavorita.addClass('invisible')
+
+        $.post("/favoritarCifra", {usuarioNome: pegaUsuario().nome, cifraNome: pegaCifra()}, function(data) {
+            console.log("ENtra AQUEEE")
+            setUser(data)
+        })
     })
 
 
