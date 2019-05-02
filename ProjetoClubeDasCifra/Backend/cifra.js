@@ -4,12 +4,11 @@ const Musica = require('./musica')
 class Cifra{
     constructor(nomeMusica, cifraMusica, autor){
         this.cifra = cifraMusica
+        this.autor = autor
         this.verificaExistenciaMusica(nomeMusica)
         this.musica.setCifra(this)
-        this.media 
-        this.total = []
-        this.usuarioAva = []
-        this.usuarioAutor = autor
+        this.total
+        this.avaliacoes = {}
         this.comentarios = []
 
         // if(db.execute(`SELECT * FROM musica WHERE nome = "${this.nome}"`) == false){
@@ -34,21 +33,24 @@ class Cifra{
         }
     }
 
-    mediaCifra(usuario, nota){
-        if(typeOf(usuarioAva.find(user => user.nome === nome)) == "object")
-           fazMedia(total, usuarioAva.length())
-        else
-           this.usuarioAva = usuario
-           this.total = nota
-           fazMedia(total, usuarioAva.length())
-    }
-    fazMedia(total, avaliacoes){
-        this.media = total/avaliacoes
-        return this.media
+    // mediaCifra(usuario, nota){
+    //     let avaliacao = avaliacoes.find(user => user.nome === usuario.nome)
+    //     if(avaliacao !== null && avaliacao !== undefined) {
+    //         let nota =
+    //     }
+    //     else{
+    //         this.avaliacoes.push({usuario.nome: nota})
+    //         this.total += nota
+    //     }
+    //     calculaMedia(total, avaliacoes.length())
+    // }
+
+    calculaMedia(total, avaliacoes){
+        return total/avaliacoes
     }
 
-    fazComentario(comentario){
-        this.comentarios = comentario
+    addComentario(comentario){
+        this.comentarios.push(comentario)
     }
 
     retornaComentarios(){
@@ -56,7 +58,7 @@ class Cifra{
     }
 
     static excluiCifra(cifra){
-        Musica.buscaMusica(cifra.nome).cifra = null
+        Musica.buscaMusica(cifra.musica.nome).cifra = null
 
     }
 

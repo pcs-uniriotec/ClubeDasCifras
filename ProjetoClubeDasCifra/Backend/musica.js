@@ -14,7 +14,7 @@ class Musica{
     
     setCifra(cifra){
         this.cifra = cifra
-        addCifra(cifra)
+        //addCifra(cifra)
     }
 
     addCifra(cifra){

@@ -13,11 +13,15 @@ class Usuario{
         this.cifras.push(cifra);
     }
 
+    isFavorite(cifra) {
+        if(cifrasFavoritas.find(cifra => cifra === cifra) !== null && cifrasFavoritas.find(cifra => cifra === cifra) !== undefined) {
+            return true
+        }
+        return false
+    }
+
     addFavorita(cifra){
-        if(typeOf(cifrasFavoritas.find(cifra => cifra === cifra)) == "object")
-           break
-        else
-           this.cifrasFavoritas = cifra
+           this.cifrasFavoritas.push(cifra)
     }
 
     static addUsuario(usuario) {
@@ -33,7 +37,7 @@ class Usuario{
     }
 
     static excluiUsuario(usuario){
-        Usuario.buscaUsuario(usuario) = null
+        Usuario.usuarios.remove(usuario)
     }
 
 }

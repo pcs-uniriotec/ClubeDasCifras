@@ -8,7 +8,6 @@ const port = 8082;
 let db = null;
 let path = require('path');
 let caminho = path.join(__dirname, '../src');
-const Busca = require('./busca.js')
 const Musica = require('./musica')
 const bodyParser = require('body-parser')
 
@@ -41,13 +40,17 @@ app.get('/cadastro', (req, res) => {
 })
 
 app.get('/getCifra', (req, res) => {
+    console.log("Entra nesse get aqui")
+    let nomeMusica = req.body.musica
+    console.log(nomeMusica)
+    musica = Musica.buscaMusica(nomeMusica)
+    console.log(musica)
     res.json({'nome': musica.nome, 'cifra': musica.cifra.cifra});
 })
 
 app.get('/getUsuario', (req, res) => [
     //res.json(usuarioBackend)
     res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario, 'email': usuarioBackend.email})
-
 ])
 
 
@@ -57,15 +60,17 @@ app.get('/getUsuario', (req, res) => [
 app.post('/enviarCifra', (req, res) => {
     const nomeMusica = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
+    const autor = req.body.autor;
+
     // usuario = req.body.user;
 
-    cifra = new Cifra(nomeMusica, cifraMusica);
+    cifra = new Cifra(nomeMusica, cifraMusica, autor);
+    console.log("Logo aqui")
+    console.log(usuarioBackend)
     usuarioBackend.setCifra(cifra);
     musica = cifra.musica
     //Cifra.criaCifra;
     res.redirect('/cifra'); //redireciona para a página de cifra
-
-
 })
 
 app.post('/buscaCifra', (req, res) => {
@@ -73,8 +78,8 @@ app.post('/buscaCifra', (req, res) => {
     musica = Musica.buscaMusica(nomeMusica);
     console.log('Entao so pode ser aqui')
     console.log(musica)
-
-    res.redirect('/cifra'); //redireciona para a página de cifra
+    res.json({nome: musica.nome, cifra: musica.cifra.cifra})
+    // res.redirect('/cifra'); //redireciona para a página de cifra
 })
 
 app.post('/registro', (req, res) => {
@@ -95,9 +100,13 @@ app.post('/login', (req, res) => {
     let senha = req.body.senha
     console.log(usuario)
 
-    usuarioBackend = Usuario.buscaUsuario(usuario, senha)
+    usuarioBackend = Usuario.verificaUsuario(usuario, senha)
 
     res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password, 'email': usuarioBackend.email}).redirect('/')
+
+})
+
+app.post('/registraNota', (req, res) => {
 
 })
 

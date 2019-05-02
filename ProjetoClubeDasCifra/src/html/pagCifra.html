@@ -22,8 +22,22 @@
     <pre id="cifra"></pre>
 
 
+    <form name="nota">
+        <input type="range" name="nota-input-name" id="nota-input-id" min="0" max="5" oninput="nota-output-id.value = nota-input-id.value">
+        <output name="nota-output-name" id="nota-output-id">3</output>
+        <button name="envia-nota" id="envia-nota">Dar Nota</button>
+    </form>
+
+    <form action="">
+        <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+    </form>
+
+    <div id="mensagem"></div>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/buscaCifra.js"></script>
+    <script src="../js/pagCifra.js"></script>
 
 </body>
 </html>

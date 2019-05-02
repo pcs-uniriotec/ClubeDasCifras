@@ -7,18 +7,23 @@
 
 
 
+
+
     $(document).ready(function() {      //roda quando a pagina termina de carregar
         verificaUsuario()
     })
 
-
     function pegaUsuario() {         //busca objeto usuario no backend
-        usuario = JSON.parse(localStorage.getItem('usuario'))
+        return JSON.parse(localStorage.getItem('usuario'))
+    }
+
+    function setUser(data) {
+        localStorage.setItem('usuario', JSON.stringify(data))
     }
 
 
     function verificaUsuario() {                                     //verifica se usuario esta logado e conforme for faz alterações na página
-        pegaUsuario()
+        usuario = pegaUsuario()
 
         if(!elementoLogin.hasClass('invisible')){
 
@@ -46,12 +51,6 @@
     })
 
 
-    function setUser(data) {
-        localStorage.setItem('usuario', JSON.stringify(data))
-    }
-
-
-
 
     $(':button[name="login"]').click(function() {                           //roda quando botao de login é clicado
 
@@ -72,14 +71,36 @@
     })
 
 
+    $('input[name="busca"]').click(function(e) {
+        e.preventDefault()
+        let musica = $('#musica').val()
+        localStorage.setItem('cifra', musica)
 
-    botaoCriarCifra.click(function() {
-        let musica = $('input[name="nomeMusica"]').val()      //recebe por input nome da musica
-        let cifraRecebida = $('#cifra').val()                 //recebe cifra pelo input de textarea
+        console.log(musica)
+        // $.post("/buscaCifra", {musica: musica}, function(data) {
+        //     console.log(data)
+        //     console.log(cifra)
+        //     window.location = '/cifra'
+        // })
 
-        $.post("/enviarCifra", {nomeMusica: musica, cifra: cifraRecebida, user: usuarioGlobal}, function(data) {
-            window.location = data
-        })
+        window.location = '/cifra'
+
+        // $.post("/buscaCifra", {musica: musica}, function(data) {
+        //     console.log(data)
+        //     console.log(cifra)
+        //     window.location = '/cifra'
+        // })
+    })
+
+
+
+    // botaoCriarCifra.click(function() {
+    //     let musica = $('input[name="nomeMusica"]').val()      //recebe por input nome da musica
+    //     let cifraRecebida = $('#cifra').val()                 //recebe cifra pelo input de textarea
+    //
+    //     $.post("/enviarCifra", {nomeMusica: musica, cifra: cifraRecebida, user: usuarioGlobal}, function(data) {
+    //         window.location = data
+    //     })
         // $.post("/login", {usuario: user, senha: password}, function(data) {
         //     usuario = data
         //     console.log(usuario)
@@ -87,7 +108,7 @@
         //     verificaUsuario()
         // })
 
-    })
+    // })
 
 
 })();
