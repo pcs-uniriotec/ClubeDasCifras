@@ -21,6 +21,11 @@ app.use(express.urlencoded());
 
 
 
+function enviaUsuario(res, usuario) {
+    res.json({'nome': usuario.nome, 'usuario': usuario.usuario,'senha': usuario.password,
+        'email': usuario.email, 'favoritas': usuario.getFavoritas(), 'cifrasCriadas': usuario.getCifras()})
+}
+
 
 
 app.get('/', (req, res) => {
@@ -77,10 +82,15 @@ app.post('/enviarCifra', (req, res) => {
     // usuario = req.body.user;
 
     cifra = new Cifra(nomeMusica, cifraMusica, autor);
-    usuarioBackend.setCifra(cifra);
+    usuario = Usuario.buscaUsuario(autor)
+    console.log(nomeMusica)
+    usuario.setCifra(nomeMusica);
+    console.log("EUUUUUOOOOOOOOO")
+    console.log(usuario.getCifras())
     musica = cifra.musica
     //Cifra.criaCifra;
-    res.redirect('/cifra'); //redireciona para a página de cifra
+    enviaUsuario(res, usuario)
+    // res.redirect('/cifra'); //redireciona para a página de cifra
 })
 
 app.post('/buscaCifra', (req, res) => {
@@ -113,8 +123,9 @@ app.post('/login', (req, res) => {
 
     usuarioBackend = Usuario.verificaUsuario(usuario, senha)
 
-    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
-            'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas()}).redirect('/')
+    enviaUsuario(res, usuarioBackend)
+    // res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
+    //         'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas(), 'cifrasCriadas': usuarioBackend.getCifras()}).redirect('/')
 
 })
 
@@ -151,8 +162,9 @@ app.post('/favoritarCifra', (req, res) => {
     console.log("E o GRAND FINALE")
     console.log(usuario)
 
-    res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
-        'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas()})
+    enviaUsuario(res, usuario)
+    // res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
+    //     'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas(), 'cifrasCriadas': usuarioBackend.getCifras()})
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------

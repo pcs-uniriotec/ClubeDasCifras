@@ -6,6 +6,10 @@
         return JSON.parse(localStorage.getItem('usuario'))
     }
 
+    function setUser(data) {
+        localStorage.setItem('usuario', JSON.stringify(data))
+    }
+
 
     botaoCriaCifra.click(function(event) {
         usuario = pegaUsuario()
@@ -15,6 +19,7 @@
         localStorage.setItem('cifra', nomeMusica)
 
         $.post("/enviarCifra", {nomeMusica: nomeMusica, cifra: cifra, autor: usuario.nome}, function(data) {
+            setUser(data)
             window.location = '/cifra'
         })
 

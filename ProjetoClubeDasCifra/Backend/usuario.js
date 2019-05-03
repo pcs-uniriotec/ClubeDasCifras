@@ -24,6 +24,10 @@ class Usuario{
         return this.cifrasFavoritas
     }
 
+    getCifras() {
+        return this.cifras
+    }
+
     addFavorita(cifra){
            this.cifrasFavoritas.push(cifra)
     }
