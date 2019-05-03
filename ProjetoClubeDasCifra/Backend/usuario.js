@@ -36,6 +36,10 @@ class Usuario{
         Usuario.usuarios.push(usuario)
     }
 
+    static removeUsuario(usuarioNome) {
+        Usuario.usuarios.splice(Usuario.usuarios.find(usu => usu.usuario == usuarioNome), 1)
+    }
+
     static verificaUsuario(usuario, senha) {
         return Usuario.usuarios.find(usu => usu.usuario == usuario && usu.senha == senha)
     }

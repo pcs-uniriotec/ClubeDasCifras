@@ -70,6 +70,10 @@ app.get('/getPerfilUsuario', (req, res) => {
     res.sendFile(caminho + '/html/perfilUsuario.html')
 })
 
+app.get('/getEditaPerfil', (req, res) => {
+    res.sendFile(caminho + '/html/editaPerfil.html')
+})
+
 
 
 
@@ -165,6 +169,16 @@ app.post('/favoritarCifra', (req, res) => {
     enviaUsuario(res, usuario)
     // res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
     //     'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas(), 'cifrasCriadas': usuarioBackend.getCifras()})
+})
+
+app.post('/bloqueiaConta', (req, res) => {
+    let usuarioNome = req.body.usuarioNome
+    console.log("BLOQUEIA CONTA")
+    console.log(usuarioNome)
+
+    // usuario = Usuario.buscaUsuario(usuarioNome)
+    Usuario.removeUsuario(usuarioNome)
+    res.redirect('/')
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------
