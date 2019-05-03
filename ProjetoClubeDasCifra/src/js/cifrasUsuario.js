@@ -36,10 +36,14 @@
             console.log(this)
             console.log('${this}')
             $(`
-            <button><a href="/cifra" id="${this}" onclick="localStorage.setItem('cifra', '${this}')">${this}</a></button><br>
+                <a href="/cifra"  onclick="localStorage.setItem('cifra', '${this}')">${this}</a>
+                <br>
             `).appendTo($('#cifras-criadas'))
+
         })
 
     }
+
+
 
 })()

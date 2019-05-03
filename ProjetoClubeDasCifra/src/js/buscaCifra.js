@@ -68,9 +68,10 @@
     function montaComentario(comentario) {
 
         $(`
-                <h4>${comentario.usuarioNome} comentou:</h4>
+                <h4 class="usuario-nome">${comentario.usuarioNome} comentou:</h4>
                 <br>
-                <p>${comentario.comentario}</p>
+                <p class="usuario-coment">${comentario.comentario}</p>
+                <p>-----------------------------------------------</p>
           `).appendTo($('#espaco-comentarios'))
     }
 

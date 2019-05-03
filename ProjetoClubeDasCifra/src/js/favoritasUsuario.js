@@ -40,7 +40,7 @@
             console.log("ENTRA AQUEEE")
             console.log(this)
              $(`
-            <button><a href="/cifra" id="${this}" onclick="localStorage.setItem('cifra', '${this}')">${this}</a></button><br>
+                <a href="/cifra" id="${this}" onclick="localStorage.setItem('cifra', '${this}')">${this}</a><br>
             `).appendTo($('#favoritas'))
         })
 

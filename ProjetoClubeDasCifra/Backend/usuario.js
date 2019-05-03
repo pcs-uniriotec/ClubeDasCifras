@@ -37,7 +37,11 @@ class Usuario{
     }
 
     static removeUsuario(usuarioNome) {
-        Usuario.usuarios.splice(Usuario.usuarios.find(usu => usu.usuario == usuarioNome), 1)
+        console.log("USUARIOSSSS")
+        console.log(Usuario.usuarios)
+        console.log(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)))
+        Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
+        console.log(Usuario.usuarios.find(usu => usu.usuario == usuarioNome))
     }
 
     static verificaUsuario(usuario, senha) {

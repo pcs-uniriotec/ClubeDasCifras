@@ -181,6 +181,14 @@ app.post('/bloqueiaConta', (req, res) => {
     res.redirect('/')
 })
 
+app.post('/excluiCifra', (req,res) => {
+    let cifraNome = req.body.cifraNome
+
+    musica = Musica.buscaMusica(cifraNome)
+    musica.setCifra(null)
+    res.redirect('/')
+})
+
 //-------------------------------------------------- banco de daddos -----------------------------
 app.get('/api/list', async (req, res) => {
     const result = await db.query('SELECT * FROM `entries`');
