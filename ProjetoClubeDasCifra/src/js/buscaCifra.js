@@ -38,8 +38,12 @@
 
         console.log(usuario)
 
-        if(usuario.favoritas.find(cifra => cifra === pegaCifra()) !== null && usuario.favoritas.find(cifra => cifra === cifra) !== undefined) {
+        if(usuario.favoritas.find(cifra => cifra === pegaCifra()) !== null && usuario.favoritas.find(cifra => cifra === pegaCifra()) !== undefined) {
+            console.log("Entro no if")
             botaoFavorita.addClass('invisible')
+        }else{
+            console.log("Entro no else")
+            botaoFavorita.removeClass('invisible')
         }
 
 
@@ -62,11 +66,6 @@
     });
 
     function montaComentario(comentario) {
-        const coment = $(`
-                            <h2>${comentario.usuarioNome}</h2>
-                            <br>
-                            <p>${comentario.comentario}</p>
-                        `)
 
         $(`
                 <h4>${comentario.usuarioNome} comentou:</h4>

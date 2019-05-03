@@ -53,6 +53,18 @@ app.get('/getUsuario', (req, res) => [
     res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario, 'email': usuarioBackend.email})
 ])
 
+app.get('/getCifrasUsuario', (req, res) => {
+    res.sendFile(caminho + '/html/cifrasUsuario.html')
+})
+
+app.get('/getFavoritasUsuario', (req, res) => {
+    res.sendFile(caminho + '/html/favoritasUsuario.html')
+})
+
+app.get('/getPerfilUsuario', (req, res) => {
+    res.sendFile(caminho + '/html/perfilUsuario.html')
+})
+
 
 
 
