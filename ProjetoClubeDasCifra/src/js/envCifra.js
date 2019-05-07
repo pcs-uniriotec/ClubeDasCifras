@@ -1,30 +1,22 @@
 (function() {
-   const botaoCriaCifra = $('#cria-cifra-id')
-    var usuario = null
-
-    function pegaUsuario() {         //busca objeto usuario no backend
-        return JSON.parse(localStorage.getItem('usuario'))
-    }
-
-    function setUser(data) {
-        localStorage.setItem('usuario', JSON.stringify(data))
-    }
+    const botaoCriarCifra = $('#cria-cifra-id')
+    const inputNomeMusica = $('input[name="nome-musica"]')
+    const inputCifra      = $('#cifra')
 
 
-    botaoCriaCifra.click(function(event) {
-        usuario = pegaUsuario()
-        let nomeMusica = $('input[name="nome-musica"]').val()
-        let cifra = $('#cifra').val()
+    botaoCriarCifra.click(function(event) {
+        usuario = getUsuario()
+        let nomeMusica = inputNomeMusica.val()
+        let cifra      = inputCifra.val()
 
-        localStorage.setItem('cifra', nomeMusica)
+        setCifra(nomeMusica)
 
-        $.post("/enviarCifra", {nomeMusica: nomeMusica, cifra: cifra, autor: usuario.nome}, function(data) {
-            setUser(data)
+        $.post("/enviarCifra", {nomeMusica: nomeMusica, cifra: cifra, autor: usuario.usuario}, function(data) {
+            setUsuario(data)
             window.location = '/cifra'
         })
 
     })
-
 
 
 })()

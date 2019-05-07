@@ -1,23 +1,24 @@
-const express = require('express'); //chamada para o express
-
+const express            = require('express'); //chamada para o express
 const createDbConnection = require('./database');
-let Cifra = require('./cifra.js')
-const Usuario = require('./usuario.js')
-const app = express();
-const port = 8082;
-let db = null;
-let path = require('path');
-let caminho = path.join(__dirname, '../src');
-const Musica = require('./musica')
-const bodyParser = require('body-parser')
+const Cifra              = require('./cifra.js')
+const Usuario            = require('./usuario.js')
+let path                 = require('path');
+const Musica             = require('./musica')
+const bodyParser         = require('body-parser')
 
-var cifra = null;
-var musica = null;
+const app  = express();
+const port = 8082;
+let db     = null;
+
+let caminho        = path.join(__dirname, '../src');
+var cifra          = null;
+var musica         = null;
 var usuarioBackend = null;
 
 app.use(bodyParser.json());
 app.use(express.static(caminho));
 app.use(express.urlencoded());
+
 
 
 
@@ -43,15 +44,6 @@ app.get('/cifra', (req, res) => {
 app.get('/cadastro', (req, res) => {
     res.sendFile(caminho + '/html/cadastro.html')
 })
-
-// app.get('/getCifra', (req, res) => {
-//     console.log("Entra nesse get aqui")
-//     let nomeMusica = req.body.musica
-//     console.log(nomeMusica)
-//     musica = Musica.buscaMusica(nomeMusica)
-//     console.log(musica)
-//     res.json({'nome': musica.nome, 'cifra': musica.cifra.cifra});
-// })
 
 app.get('/getUsuario', (req, res) => [
     //res.json(usuarioBackend)
@@ -79,105 +71,81 @@ app.get('/getEditaPerfil', (req, res) => {
 
 
 app.post('/enviarCifra', (req, res) => {
-    const nomeMusica = req.body.nomeMusica;
+    const nomeMusica  = req.body.nomeMusica;
     const cifraMusica = req.body.cifra;
-    const autor = req.body.autor;
+    const autor       = req.body.autor;
 
-    // usuario = req.body.user;
+    cifra   = new Cifra(nomeMusica, cifraMusica, autor);
 
-    cifra = new Cifra(nomeMusica, cifraMusica, autor);
     usuario = Usuario.buscaUsuario(autor)
-    console.log(nomeMusica)
     usuario.setCifra(nomeMusica);
-    console.log("EUUUUUOOOOOOOOO")
-    console.log(usuario.getCifras())
+
     musica = cifra.musica
-    //Cifra.criaCifra;
+
     enviaUsuario(res, usuario)
-    // res.redirect('/cifra'); //redireciona para a página de cifra
 })
 
 app.post('/buscaCifra', (req, res) => {
     const nomeMusica = req.body.musica
     musica = Musica.buscaMusica(nomeMusica);
-    console.log('Entao so pode ser aqui')
-    console.log(musica)
+
     res.json({nome: musica.nome, cifra: musica.cifra.cifra, media: musica.cifra.calculaMedia(), comentarios: musica.cifra.getComentarios()})
-    // res.redirect('/cifra'); //redireciona para a página de cifra
 })
 
 app.post('/registro', (req, res) => {
-    let nome = req.body.nome
+    let nome    = req.body.nome
     let usuario = req.body.username
-    let senha = req.body.password
-    let email = req.body.email
+    let senha   = req.body.password
+    let email   = req.body.email
 
     usuarioBackend = new Usuario(nome, usuario, senha, email)
-    console.log("AQUIIIII")
-    console.log(usuarioBackend)
+
     res.redirect('/')
 })
 
 app.post('/login', (req, res) => {
-    console.log("bem aqui")
-    console.log(usuarioBackend)
     let usuario = req.body.usuario
-    let senha = req.body.senha
-    console.log(usuario)
+    let senha   = req.body.senha
 
     usuarioBackend = Usuario.verificaUsuario(usuario, senha)
 
     enviaUsuario(res, usuarioBackend)
-    // res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
-    //         'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas(), 'cifrasCriadas': usuarioBackend.getCifras()}).redirect('/')
-
 })
 
 app.post('/registraNota', (req, res) => {
     let usuarioNome = req.body.usuarioNome
-    let cifraNome = req.body.cifraNome
-    let nota = req.body.nota
+    let cifraNome   = req.body.cifraNome
+    let nota        = req.body.nota
 
     usuario = Usuario.buscaUsuario(usuarioNome)
-    musica = Musica.buscaMusica(cifraNome)
+    musica  = Musica.buscaMusica(cifraNome)
 
     musica.cifra.registraAvaliacoes(usuarioNome, nota)
 })
 
 app.post('/registraComentario', (req, res) => {
     let usuarioNome = req.body.usuarioNome
-    let cifraNome = req.body.cifraNome
-    let comentario = req.body.comentario
+    let cifraNome   = req.body.cifraNome
+    let comentario  = req.body.comentario
 
     musica = Musica.buscaMusica(cifraNome)
     musica.cifra.addComentario(usuarioNome, comentario)
-    console.log("COMENTARIOSSSS")
-    console.log(musica.cifra.getComentarios())
 })
 
 app.post('/favoritarCifra', (req, res) => {
     let usuarioNome = req.body.usuarioNome
-    let cifraNome = req.body.cifraNome
-    console.log("Entrou no FAVORITAR CIFRA")
-    usuario = Usuario.buscaUsuario(usuarioNome)
+    let cifraNome   = req.body.cifraNome
 
+    usuario = Usuario.buscaUsuario(usuarioNome)
     usuario.addFavorita(cifraNome)
 
-    console.log("E o GRAND FINALE")
-    console.log(usuario)
-
     enviaUsuario(res, usuario)
-    // res.json({'nome': usuarioBackend.nome, 'usuario': usuarioBackend.usuario,'senha': usuarioBackend.password,
-    //     'email': usuarioBackend.email, 'favoritas': usuarioBackend.getFavoritas(), 'cifrasCriadas': usuarioBackend.getCifras()})
 })
 
 app.post('/bloqueiaConta', (req, res) => {
     let usuarioNome = req.body.usuarioNome
-    console.log("BLOQUEIA CONTA")
-    console.log(usuarioNome)
-
-    // usuario = Usuario.buscaUsuario(usuarioNome)
     Usuario.removeUsuario(usuarioNome)
+
     res.redirect('/')
 })
 
@@ -186,6 +154,7 @@ app.post('/excluiCifra', (req,res) => {
 
     musica = Musica.buscaMusica(cifraNome)
     musica.setCifra(null)
+
     res.redirect('/')
 })
 

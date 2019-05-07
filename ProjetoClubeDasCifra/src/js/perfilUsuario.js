@@ -1,24 +1,17 @@
 (function() {
-    var usuario
+    const nomePerfil    = $('#nome')
+    const usuarioPerfil = $('#usuario')
+    const emailPerfil   = $('#email')
    
     $(document).ready(function () {
-        usuario = pegaUsuario()
-
+        usuario = getUsuario()
         atribuiValores(usuario)
     })
 
     function atribuiValores(usuario) {
-        $('#nome').html(usuario.nome)
-        $('#usuario').html(usuario.usuario)
-        $('#email').html(usuario.email)
-    }
-
-    function pegaUsuario() {         //busca objeto usuario no backend
-        return JSON.parse(localStorage.getItem('usuario'))
-    }
-
-    function setUser(data) {
-        localStorage.setItem('usuario', JSON.stringify(data))
+        nomePerfil.html(usuario.nome)
+        usuarioPerfil.html(usuario.usuario)
+        emailPerfil.html(usuario.email)
     }
 
 })()

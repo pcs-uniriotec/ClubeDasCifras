@@ -1,71 +1,44 @@
 (function(){
-    const nota = $('#nota-output-id')
-    const notaInput = $('#nota-input-id')
-    const botaoFavorita = $(':button[name="favorita-cifra"]')
-    var usuario
-    var cifraNome
+    const nota            = $('#nota-output-id')                   //nota q aparece na tela
+    const notaInput       = $('#nota-input-id')                    //input pro usuario dar nota
+    const comentarioInput = $('#comentario-input')
+    const botaoFavoritar  = $(':button[name="favorita-cifra"]')    //botao de favoritar
+    const botaoAvaliar    = $(':button[name="envia-nota"]')
+    const botaoComentar   = $(':button[name="cria-comentario"]')
 
-
-    function setUser(data) {
-        localStorage.setItem('usuario', JSON.stringify(data))
-    }
-
-    function pegaUsuario() {         //busca objeto usuario no backend
-        return JSON.parse(localStorage.getItem('usuario'))
-    }
-
-    function pegaCifra() {
-        return localStorage.getItem('cifra')
-    }
 
     notaInput.change(function () {
-        console.log("Funciona")
         nota.html(notaInput.val())
     })
 
-    $(':button[name="envia-nota"]').click(function(e) {
+    botaoAvaliar.click(function(e) {
         e.preventDefault()
-        usuario = pegaUsuario()
-        cifraNome   = pegaCifra()
-        $.post("/registraNota", {usuarioNome: usuario.nome, cifraNome: cifraNome, nota: notaInput.val()}, function(data){
-
+        usuario     = getUsuario()
+        cifraNome   = getCifra()
+        $.post("/registraNota", {usuarioNome: usuario.usuario, cifraNome: cifraNome, nota: notaInput.val()}, function(data){
         })
     })
 
-    $(':button[name="cria-comentario"]').click(function(e) {
+    botaoComentar.click(function(e) {
         e.preventDefault()
-        usuario = pegaUsuario()
-        cifraNome = pegaCifra()
-        let comentario = $('#comentario-input').val()
-
-        console.log(usuario.nome)
-        console.log(cifraNome)
-        console.log(comentario)
+        usuario   = getUsuario()
+        cifraNome = getCifra()
+        let comentario = comentarioInput.val()
 
         if(comentario !== null && comentario !== undefined) {
-            $.post("/registraComentario", {usuarioNome: usuario.nome, cifraNome: cifraNome, comentario: comentario}, function(data) {
-
+            $.post("/registraComentario", {usuarioNome: usuario.usuario, cifraNome: cifraNome, comentario: comentario}, function(data) {
             })
         }
     })
 
-    $(botaoFavorita).click(function(e) {
+     botaoFavoritar.click(function(e) {
         e.preventDefault()
-        botaoFavorita.addClass('invisible')
+        botaoFavoritar.addClass('invisible')
 
-        $.post("/favoritarCifra", {usuarioNome: pegaUsuario().nome, cifraNome: pegaCifra()}, function(data) {
-            console.log("ENtra AQUEEE")
-            setUser(data)
+        $.post("/favoritarCifra", {usuarioNome: usuario.usuario, cifraNome: getCifra()}, function(data) {
+            setUsuario(data)
         })
     })
-
-
-
-    // notaInput.addEventListener("change", function() {
-    //     console.log("teste")
-    //     nota.html('oi 222')
-    // })
-
 
 
 })();
