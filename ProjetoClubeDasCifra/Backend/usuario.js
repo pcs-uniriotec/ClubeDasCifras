@@ -13,15 +13,35 @@ class Usuario{
         this.cifras.push(cifra);
     }
 
+    isFavorite(cifra) {
+        if(cifrasFavoritas.find(cifra => cifra === cifra) !== null && cifrasFavoritas.find(cifra => cifra === cifra) !== undefined) {
+            return true
+        }
+        return false
+    }
+
+    getFavoritas() {
+        return this.cifrasFavoritas
+    }
+
+    getCifras() {
+        return this.cifras
+    }
+
     addFavorita(cifra){
-        if(typeOf(cifrasFavoritas.find(cifra => cifra === cifra)) == "object")
-           break
-        else
-           this.cifrasFavoritas = cifra
+           this.cifrasFavoritas.push(cifra)
     }
 
     static addUsuario(usuario) {
         Usuario.usuarios.push(usuario)
+    }
+
+    static removeUsuario(usuarioNome) {
+        console.log("USUARIOSSSS")
+        console.log(Usuario.usuarios)
+        console.log(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)))
+        Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
+        console.log(Usuario.usuarios.find(usu => usu.usuario == usuarioNome))
     }
 
     static verificaUsuario(usuario, senha) {
@@ -33,7 +53,7 @@ class Usuario{
     }
 
     static excluiUsuario(usuario){
-        Usuario.buscaUsuario(usuario) = null
+        Usuario.usuarios.remove(usuario)
     }
 
 }

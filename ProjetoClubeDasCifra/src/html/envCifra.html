@@ -4,48 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-
+  <link rel="stylesheet" href="../css/corpo.css">
 
 </head>
 <body>
-<h1>Compartilhe sua cifra!</h2>
 
-  <a href="/">Voltar para página inicial</a>
-
-  <!--<form target="_self">-->
-    <!--<div class="dropdown">-->
-    <!--<div id="idDropdown" class="dropdown-content">-->
-    <!--<input type="text" placeholder="Search.." id="myInput" onkeyup="funcaoFiltra()">-->
-    <!--<a href="x">x</a>-->
-    <!--<a href="y">y</a>-->
-    <!--<a href="z">z</a>-->
-    <!--<a href="a">a</a>-->
-    <!--<a href="b">b</a>-->
-    <!--<a href="c">c</a>-->
-    <!--<a href="d">d</a>-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <br>
-    <div>
-      <form action="/enviarCifra" method="POST">
-        Nome da musica:<br>
-        <input type="text" name="nomeMusica" id="nomeMusica" required>
-        <br>
-        Letra com cifra:<br>
-        <textarea id="cifra" name="cifra" required></textarea>
-        <br>
-        <input type="submit" value="Criar">
-      <!--<button name="cria-cifra">Criar</button>-->
-        <!--<button name="cria-cifra">Criar</button>-->
-      </form>
-    </div>
-  <!--</form>-->
+  <div class="container">
+    <a href="/">Voltar para página inicial</a>
+    <h1>Compartilhe sua cifra!</h2>
+      <br>
+      <div>
+        <!--<form action="/enviarCifra" method="POST">-->
+        <form>
+          Nome da musica:<br>
+          <input type="text" name="nome-musica" id="nomeMusica" required>
+          <br>
+          Letra com cifra:<br>
+          <textarea id="cifra" name="cifra" cols="80" rows="25"required></textarea>
+          <br>
+          <!--<input type="submit" value="Criar" name="envCifra">-->
+          <button name="cria-cifra" id="cria-cifra-id">Criar Cifra</button>
+        </form>
+      </div>
+      <!--</form>-->
+  </div>
 
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="../js/usuario.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/cifra.js"></script>
+  <script src="../js/usuario.js"></script>
+  <script src="../js/envCifra.js"></script>
 
 </body>
 </html>

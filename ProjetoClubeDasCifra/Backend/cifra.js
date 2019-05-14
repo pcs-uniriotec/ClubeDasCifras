@@ -4,12 +4,11 @@ const Musica = require('./musica')
 class Cifra{
     constructor(nomeMusica, cifraMusica, autor){
         this.cifra = cifraMusica
+        this.autor = autor
         this.verificaExistenciaMusica(nomeMusica)
         this.musica.setCifra(this)
-        this.media 
-        this.total = []
-        this.usuarioAva = []
-        this.usuarioAutor = autor
+        this.total = parseInt('0')
+        this.avaliacoes = []
         this.comentarios = []
 
         // if(db.execute(`SELECT * FROM musica WHERE nome = "${this.nome}"`) == false){
@@ -34,21 +33,48 @@ class Cifra{
         }
     }
 
-    mediaCifra(usuario, nota){
-        if(typeOf(usuarioAva.find(user => user.nome === nome)) == "object")
-           fazMedia(total, usuarioAva.length())
-        else
-           this.usuarioAva = usuario
-           this.total = nota
-           fazMedia(total, usuarioAva.length())
-    }
-    fazMedia(total, avaliacoes){
-        this.media = total/avaliacoes
-        return this.media
+    registraAvaliacoes(usuario, nota){
+        //let avaliacao = avaliacoes.find(user => user.nome === usuario.nome)
+        console.log(usuario)
+        console.log(this.avaliacoes[usuario])
+        let avaliacao = this.avaliacoes[usuario]
+        console.log(this.avaliacoes)
+        console.log("AQUI È AVALIACAO "+ avaliacao)
+        if(avaliacao !== null && avaliacao !== undefined) {
+            console.log("AQUI ENTRAAAA")
+            this.avaliacoes[usuario] = nota
+             nota = avaliacao - nota
+            console.log(nota)
+            this.total -= nota
+        }
+        else{
+            console.log("AQUI ENTRA PRIMEIRO")
+            console.log(this.avaliacoes)
+            this.avaliacoes[usuario]= nota
+            console.log(this.avaliacoes)
+            console.log(nota)
+            this.total = parseInt(this.total) + parseInt(nota)
+            console.log("TOTALLL")
+            console.log("Total"+ this.total)
+        }
+
     }
 
-    fazComentario(comentario){
-        this.comentarios = comentario
+    calculaMedia(){
+        console.log("AQUI Ó, TOTAL")
+        console.log(this.total)
+        console.log(this.avaliacoes)
+        console.log(this.avaliacoes.length)
+        console.log(Object.keys(this.avaliacoes).length)
+        return this.total/Object.keys(this.avaliacoes).length
+    }
+
+    addComentario(usuarioNome, comentario){
+        this.comentarios.push({usuarioNome: usuarioNome, comentario: comentario})
+    }
+
+    getComentarios() {
+        return this.comentarios
     }
 
     retornaComentarios(){
@@ -56,7 +82,7 @@ class Cifra{
     }
 
     static excluiCifra(cifra){
-        Musica.buscaMusica(cifra.nome).cifra = null
+        Musica.buscaMusica(cifra.musica.nome).cifra = null
 
     }
 

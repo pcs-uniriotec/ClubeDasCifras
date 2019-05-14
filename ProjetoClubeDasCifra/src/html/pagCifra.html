@@ -11,6 +11,18 @@
             margin-right: auto;
             font-family: Monospaced;
         }
+
+        .invisible {
+            visibility: hidden;
+        }
+
+        .usuario-nome {
+            margin-bottom: 5px;
+        }
+
+        .usuario-coment {
+            margin-top: 5px;
+        }
     </style>
 
 </head>
@@ -19,11 +31,35 @@
     <a href="/">Voltar a página inicial</a>
 
     <h1 id="nomeMusica"></h1>
+    <button name="favorita-cifra" id="favorita-cifra">Favoritar Cifra</button>
     <pre id="cifra"></pre>
 
 
+    <form name="nota">
+        <p>Nota: <span id="nota"></span></p>
+        <input type="range" name="nota-input-name" id="nota-input-id" min="0" max="5">
+        <output name="nota-output-name" id="nota-output-id">3</output>
+        <button name="envia-nota" id="envia-nota">Dar Nota</button>
+    </form>
+
+    <form action="">
+        <p>COMENTE!</p>
+        <textarea name="comentario-input" id="comentario-input" cols="50" rows="3"></textarea>
+        <button name="cria-comentario" id="cria-comentario">Comentar</button>
+    </form>
+
+    <p>------------------------------------------------------------------------------------------</p>
+
+    <div id="espaco-comentarios">
+        <p id="comentario"></p>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/usuario.js"></script>
+    <script src="../js/cifra.js"></script>
     <script src="../js/buscaCifra.js"></script>
+    <script src="../js/pagCifra.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,74 @@
+
+/*#login {*/
+    /*width: 100px;*/
+/*}*/
+
+#nome-site {
+    color: white;
+    font-size: 50px;
+}
+
+.usuario {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: white;
+}
+
+.header {
+    margin-bottom: 60px;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#usuario {
+    text-decoration: none;
+    color: white;
+}
+
+#cadastro {
+    float: right;
+    padding-bottom: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+#login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 20px;
+
+}
+
+#musica {
+    width: 500px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+#musica-label {
+    font-size: 18px;
+}
+
+.box {
+    margin: 0 25%;
+}
+
+#enviar-cifra {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#bordao {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#busca-cifra {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

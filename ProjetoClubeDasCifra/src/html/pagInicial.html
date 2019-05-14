@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8">
   <title>clube Das Cifras</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/corpo.css">
+  <link rel="stylesheet" href="../css/header.css">
   <style>
     #login {
       float: right;
@@ -18,56 +21,77 @@
 </head>
 
 <body>
-  <div id="login">
 
-      <input type="text" name="usuario" placeholder="usuário" required>
-      <input type="password" name="password" placeholder="senha" required>
-      <button name="login">Logar</button>
+  <header class="header">
+    <div class="container">
+      <h1 id="nome-site"> Clube das Cifras </h1>
 
-  </div>
+      <div id="login">
 
-  <div class="usuario">
-    <p id="usuario"></p>
-    <button name="deslogar" class="invisible">Deslogar</button>
-  </div>
+        <input type="text" name="usuario" placeholder="usuário" required>
+        <input type="password" name="password" placeholder="senha" required>
+        <button name="login">Logar</button>
 
-  <h1> Clube das Cifras </h1>
+      </div>
+
+      <a href="/cadastro" id="cadastro">Cadastre-se</a>
+
+      <div class="usuario">
+        <a href="/getPerfilUsuario" id="usuario"></a>
+        <p ></p>
+        <button name="deslogar" class="invisible">Deslogar</button>
+      </div>
+    </div>
+
+  </header>
+
+
+    <div class="container">
+      <div class="box">
+        <h1 id="bordao">Toque com a gente!</h1>
+
+        <a href="/enviarCifra" id="enviar-cifra" class="invisible">Envie uma cifra</a>
+
+
+        <form action="/buscaCifra" method="POST" id="busca-cifra">
+
+          <!--<label for="autor">Procure pelo nome do autor:</label>-->
+          <!--<br>-->
+          <!--<input type="text" name="autor" id="autor">-->
+          <!--<br>-->
+          <label for="musica" id="musica-label">Busque uma Cifra:</label>
+          <br>
+          <input type="text" name="musica" id="musica" placeholder="Nome da Música">
+          <br>
+          <!--<label for="estilos-musicais">Procure pelo estilo musical:</label>-->
+          <!--<br>-->
+          <!--<select name="estilos-musicais" id="estilos-musicais">-->
+          <!--<option value="rock">Rock</option>-->
+          <!--<option value="pop">Pop</option>-->
+          <!--<option value="reggae">Reggae</option>-->
+          <!--<option value="rap">Rap</option>-->
+          <!--</select>-->
+          <!--<br>-->
+          <input type="submit" value="Buscar" name="busca">
+
+        </form>
+
+
+
+        <p> Não achou o que procura? Nos envie!</p>
+        <a href="compacifraBoxX" class="btn"> clique aqui</a>
+      </div>
+    </div>
+
+
+
   
-  <p>Toque com a gente!</p>
 
-  <a href="/enviarCifra" id="enviar-cifra" class="invisible">Envie uma cifra</a>
-
-
-  <form action="/buscaCifra" method="POST">
-
-    <label for="autor">Procure pelo nome do autor:</label>
-    <br>
-    <input type="text" name="autor" id="autor">
-    <br>
-    <label for="musica">Procure pelo nome da música:</label>
-    <br>
-    <input type="text" name="musica" id="musica">
-    <br>
-    <label for="estilos-musicais">Procure pelo estilo musical:</label>
-    <br>
-    <select name="estilos-musicais" id="estilos-musicais">
-      <option value="rock">Rock</option>
-      <option value="pop">Pop</option>
-      <option value="reggae">Reggae</option>
-      <option value="rap">Rap</option>
-    </select>
-    <br>
-    <input type="submit" value="Buscar">
-
-  </form>
-
-  <a href="/cadastro" id="cadastro">Clique aqui para se cadastrar</a>
-
-  <p> Não achou o que procura? Nos envie!</p>
-  <a href="compacifraBoxX" class="btn"> clique aqui</a>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/cifra.js"></script>
   <script src="../js/usuario.js"></script>
+  <script src="../js/pagInicial.js"></script>
 
 </body>
 </html>

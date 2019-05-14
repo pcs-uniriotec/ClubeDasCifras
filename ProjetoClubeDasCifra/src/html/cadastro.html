@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="../css/corpo.css">
 </head>
 <body>
 
 
-    <form action="/registro" method="POST">
-        <input type="text" name="nome" placeholder="Nome completo" required><br>
-        <input type="text" name="username" placeholder="Usuario" required><br>
-        <input type="password" name="password" placeholder="Senha" required><br>
-        <input type="password" placeholder="Repita a senha" name="psw-repeat" required><br>
-        <input type="text" placeholder=" Email" name="email" required>
-        <p>Ao criar uma conta, você estará concordando com nosso<a href="link do termo"> Termos & responsabilidades</a>.</p>
-        <input type="submit" id="submitbtn" value="Registrar"></input>
-    </form>
+    <div class="container">
+        <a href="/">Voltar à página inicial</a>
+        <form action="/registro" method="POST">
+            <h1>CADASTRO</h1>
+            <input type="text" name="nome" placeholder="Nome completo" required><br>
+            <input type="text" name="username" placeholder="Usuario" required><br>
+            <input type="password" name="password" placeholder="Senha" required><br>
+            <input type="password" placeholder="Repita a senha" name="psw-repeat" required><br>
+            <input type="text" placeholder=" Email" name="email" required>
+            <p>Ao criar uma conta, você estará concordando com nosso<a href="link do termo"> Termos & responsabilidades</a>.</p>
+            <input type="submit" id="submitbtn" value="Registrar"></input>
+        </form>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/usuario.js"></script>
     <script src="../js/cadastro.js"></script>
 
 
