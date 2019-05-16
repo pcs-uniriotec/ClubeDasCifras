@@ -2,10 +2,11 @@
     const elementoLogin     = $('#login')
     const elementoUsuario   = $('#usuario')
     const botaoDeslogar     = $(':button[name="deslogar"]')
+    const botaoLogar        = $('#logar')
     const botaoCriarCifra   = $(':button[name="cria-cifra"]')
+    const loginOpcoes       = $('#login-opcoes')
     const linkEnviarCifra   = $('#enviar-cifra')
     const linkCadastro      = $('#cadastro')
-    const botaoLogar        = $(':button[name="login"]')
     const usuarioInputLogin = $('input[name="usuario"]')
     const senhaInputLogin   = $('input[name="password"]')
     const botaoBuscaCifra   = $('input[name="busca"]')
@@ -19,11 +20,12 @@
     function verificaUsuario() {                                     //verifica se usuario esta logado e conforme for faz alterações na página
         usuario = getUsuario()
 
-        if(!elementoLogin.hasClass('invisible')){
+        if(!loginOpcoes.hasClass('invisible')){
 
             if(usuario !== undefined && usuario !== null) {  //entra no if se usuario tiver logado
                 elementoLogin.addClass('invisible')                      //torna o login invisivel, pois usuario ja logou
                 linkCadastro.addClass('invisible')                     //torna invisivel link para cadastro
+                loginOpcoes.addClass('invisible')
                 botaoDeslogar.removeClass('invisible')                   //torna visivel botao de deslogar
                 linkEnviarCifra.removeClass('invisible')              //torna visivel link para enviar cifra
                 elementoUsuario.html('user: '+ usuario.usuario)     //define conteudo de elemento html com nome de usuario
@@ -33,6 +35,7 @@
                 linkEnviarCifra.addClass('invisible')                 //torna invisivel link para enviar cifra
                 elementoLogin.removeClass('invisible')                   //torna visivel o login
                 linkCadastro.removeClass('invisible')                  //torna visivel link para o cadastro
+                loginOpcoes.removeClass('invisible')
                 elementoUsuario.html('')                                 //elimina conteudo de elemento hmtl q diz nome do usuario
             }
         }
