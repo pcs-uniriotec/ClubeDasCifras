@@ -6,6 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clube das Cifras</title>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyALPGtwenwfpsmWM2ytIo_ayYB2T0x3Log",
+      authDomain: "projetoclubedascifras.firebaseapp.com",
+      databaseURL: "https://projetoclubedascifras.firebaseio.com",
+      projectId: "projetoclubedascifras",
+      storageBucket: "projetoclubedascifras.appspot.com",
+      messagingSenderId: "1009851110308",
+      appId: "1:1009851110308:web:ebaa8e647babfd6f"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -281,7 +309,7 @@
                 <p class="hint-text">Entre com sua conta</p>
                 <div class="form-group social-btn clearfix">
                   <a href="#" class="btn btn-primary pull-left"><i class="fa fa-facebook"></i> Facebook</a>
-                  <a href="#" class="btn btn-danger pull-right"><i class="fa fa-google"></i> Google</a>
+                  <a href="#" class="btn btn-danger pull-right" id="google-login"><i class="fa fa-google"></i> Google</a>
                 </div>
                 <div class="or-seperator"> <b>ou </b></div>
                 <div class="form-group">

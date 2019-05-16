@@ -1,8 +1,8 @@
 (function () {
 
     $('#submitbtn').click(function() {
-        let username = $('input[name="username"]').val()
-        let password = $('input[name="password"]').val()
+        let username = $('input[name="usuario"]').val()
+        let password = $('input[name="senha"]').val()
         let nome     = $('input[name="nome"]').val()
         let email    = $('input[name="email"]').val()
 

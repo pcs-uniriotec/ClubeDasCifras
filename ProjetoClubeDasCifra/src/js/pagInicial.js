@@ -1,16 +1,17 @@
 (function(){
-    const elementoLogin     = $('#login')
-    const elementoUsuario   = $('#usuario')
-    const botaoDeslogar     = $(':button[name="deslogar"]')
-    const botaoLogar        = $('#logar')
-    const botaoCriarCifra   = $(':button[name="cria-cifra"]')
-    const loginOpcoes       = $('#login-opcoes')
-    const linkEnviarCifra   = $('#enviar-cifra')
-    const linkCadastro      = $('#cadastro')
-    const usuarioInputLogin = $('input[name="usuario"]')
-    const senhaInputLogin   = $('input[name="password"]')
-    const botaoBuscaCifra   = $('input[name="busca"]')
-    const inputBuscaMusica  = $('#musica')
+    const elementoLogin       = $('#login')
+    const elementoUsuario     = $('#usuario')
+    const botaoDeslogar       = $(':button[name="deslogar"]')
+    const botaoLogar          = $('#logar')
+    const botaoCriarCifra     = $(':button[name="cria-cifra"]')
+    const loginOpcoes         = $('#login-opcoes')
+    const linkEnviarCifra     = $('#enviar-cifra')
+    const linkCadastro        = $('#cadastro')
+    const usuarioInputLogin   = $('input[name="usuario"]')
+    const senhaInputLogin     = $('input[name="password"]')
+    const botaoBuscaCifra     = $('input[name="busca"]')
+    const inputBuscaMusica    = $('#musica')
+    const botaoLoginComGoogle = $('#google-login')
 
 
     $(document).ready(function() {      //roda quando a pagina termina de carregar
@@ -58,8 +59,7 @@
             verificaUsuario()
         })
     })
-
-
+    
     botaoBuscaCifra.click(function(e) {
         e.preventDefault()                                  //previne q a página recarregue
         let musica = inputBuscaMusica.val()                     //pega o valor inputado pelo usuário, no campo de nome de música
@@ -67,5 +67,42 @@
 
         window.location = '/cifra'                          //encaminha usuário para página de cifra
     })
+
+    botaoLoginComGoogle.click( function () {
+        var googleAuthProvider = new firebase.auth.GoogleAuthProvider
+
+        return firebase.auth().signInWithPopup(googleAuthProvider)
+            .then( function(data) {
+                console.log(data)
+                var idToken = data.credential.idToken
+                var usuarioAux = {nome: data.user.displayName, usuario: data.user.displayName, senha:"",
+                                  email: data.user.email, favoritas: [], cifrasCriadas: []}
+
+                verificaExistenciaUsuario(usuarioAux)
+
+            })
+            .catch( function(error) {
+                console.log(error)
+            })
+    })
+
+    function verificaExistenciaUsuario(usuarioAux) {
+
+        $.post('/verificaExistenciaUsuario', usuarioAux, function(data) {
+
+            if(typeof data !== "object") {
+                $.post("/registro", usuarioAux, function(data) {
+                })
+                setUsuario(usuarioAux)
+            }else {
+                setUsuario(data)
+            }
+
+            verificaUsuario()
+        })
+
+    }
+    
+    
 
 })();

@@ -94,13 +94,29 @@ app.post('/buscaCifra', (req, res) => {
 
 app.post('/registro', (req, res) => {
     let nome    = req.body.nome
-    let usuario = req.body.username
-    let senha   = req.body.password
+    let usuario = req.body.usuario
+    let senha   = req.body.senha
     let email   = req.body.email
 
     usuarioBackend = new Usuario(nome, usuario, senha, email)
 
     res.redirect('/')
+})
+
+app.post('/verificaExistenciaUsuario', (req, res) => {
+    let usuario = req.body.usuario
+
+    usuarioBackend = Usuario.buscaUsuario(usuario)
+
+    console.log(usuarioBackend !== undefined)
+    if(usuarioBackend !== undefined) {
+        console.log("ENVIA USUARIO")
+        enviaUsuario(res, usuarioBackend)
+    }else{
+        console.log("ENVIA UNDEFINED")
+        res.send(undefined)
+    }
+
 })
 
 app.post('/login', (req, res) => {
