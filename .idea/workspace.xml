@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d513bb77-527f-4d77-b1db-7955be3750c2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/administradorDeDependencias.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/Exemplo Vue.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cadastro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cifrasUsuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cifrasUsuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/envCifra.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/envCifra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagInicial.html" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagInicial.html" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagInicial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cadastro.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="11398" lean-forward="true" selection-start-line="27" selection-start-column="11398" selection-end-line="27" selection-end-column="11398" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/perfilUsuario.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cifrasUsuario.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagCifra.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/package.json" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/Exemplo Vue.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cifrasUsuario.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/administradorDeDependencias.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/favoritasUsuario.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/index.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/login.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/js/carousel].js" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/js/carousel.js" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/envCifra.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/carousel.css" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/corpo.css" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/header.css" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagInicial.html" />
+        <option value="$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cadastro.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-17" />
+    <option name="y" value="69" />
+    <option name="width" value="1311" />
+    <option name="height" value="781" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+              <item name="Backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="Bootstrap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubeDasCifras" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubeDasCifras" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoClubeDasCifra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JaRus\Documents\GitHub\ClubeDasCifras\ClubeDasCifras\ProjetoClubeDasCifra\src\css\Bootstrap" />
+      <recent name="C:\Users\JaRus\Documents\GitHub\ClubeDasCifras\ClubeDasCifras\ProjetoClubeDasCifra\src\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JaRus\Documents\GitHub\ClubeDasCifras\ClubeDasCifras\ProjetoClubeDasCifra\src\css\Bootstrap\Imgs" />
+      <recent name="C:\Users\JaRus\Documents\GitHub\ClubeDasCifras\ClubeDasCifras\ProjetoClubeDasCifra\src\html" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.cadastro.html">
+    <configuration name="cadastro.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClubeDasCifras/ProjetoClubeDasCifra/src/html/cadastro.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ClubeDasCifras/mdbootstrap/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/ProjetoClubeDasCifra/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.cadastro.html" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d513bb77-527f-4d77-b1db-7955be3750c2" name="Default Changelist" comment="" />
+      <created>1557877185668</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557877185668</updated>
+      <workItem from="1557877186876" duration="8375000" />
+      <workItem from="1557958096893" duration="12195000" />
+      <workItem from="1557973928577" duration="284000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20854000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="49" width="1311" height="781" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980362" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32718894" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3287037" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3287037" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="11" visible="true" weight="0.32872504" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/Backend/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/index.html" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/Exemplo Vue.html" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/administradorDeDependencias.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/css/bootstrap.css" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/css/mdb.css" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/js/bootstrap.js" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/editaPerfil.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/js/jquery-3.3.1.min.js" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/js/jquery-3.4.0.min.js" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/README.txt" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/README.md" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/mdbootstrap/index.html" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/envCifra.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/carousel.css" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/js/carousel.js" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/login.html" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/Imgs/rtbtn.png" />
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/Bootstrap/Imgs/images.png" />
+    <entry file="file://$USER_HOME$/Desktop/images.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/perfil.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-621">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/listaCifras.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/css/corpo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cifrasUsuario.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagCifra.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/perfilUsuario.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/favoritasUsuario.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/pagInicial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ProjetoClubeDasCifra/src/html/cadastro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="11398" lean-forward="true" selection-start-line="27" selection-start-column="11398" selection-end-line="27" selection-end-column="11398" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

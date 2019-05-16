@@ -1,10 +1,10 @@
 
-/*#login {*/
+#login {
     /*width: 100px;*/
-/*}*/
+}
 
 #nome-site {
-    color: white;
+    color: black;
     font-size: 50px;
 }
 
@@ -15,12 +15,6 @@
     color: white;
 }
 
-.header {
-    margin-bottom: 60px;
-    background-color: black;
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
 
 #usuario {
     text-decoration: none;
@@ -48,6 +42,7 @@
     height: 30px;
     border-radius: 10px;
     font-size: 20px;
+    position: absolute;
 }
 
 #musica-label {
@@ -71,4 +66,5 @@
 #busca-cifra {
     margin-top: 30px;
     margin-bottom: 30px;
+    positon :relative;
 }
