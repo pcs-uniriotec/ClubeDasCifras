@@ -2,7 +2,7 @@
 const server             = require('./iniciaFirebase.js')
 
 const database = server.firebase
-const usuariosRef   = database.ref("/Usuarios")
+const usuariosRef = database.ref("/Usuarios")
 
 class Usuario{
     constructor(nome, usuario, senha, email) {

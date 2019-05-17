@@ -1,15 +1,20 @@
 const db = require('./database')
 const Musica = require('./musica')
 
+const server             = require('./iniciaFirebase.js')
+
+const database = server.firebase
+const musicasRef   = database.ref("/Musicas")
+
 class Cifra{
     constructor(nomeMusica, cifraMusica, autor){
         this.cifra = cifraMusica
         this.autor = autor
-        this.verificaExistenciaMusica(nomeMusica)
-        this.musica.setCifra(this)
         this.total = parseInt('0')
         this.avaliacoes = []
         this.comentarios = []
+        this.verificaExistenciaMusica(nomeMusica)//inverti a ordem mas acho q n vai legar
+        this.musica.setCifra(this)
 
         // if(db.execute(`SELECT * FROM musica WHERE nome = "${this.nome}"`) == false){
         //     Musica = new musica(this.nome)
@@ -24,6 +29,7 @@ class Cifra{
     }
 
     verificaExistenciaMusica(nomeMusica) {//verifica se a musica da cifra sendo instanciada ja existe no sistema
+        //com o firebase sera retornado um objeto musica key
         let musicaAchada = Musica.buscaMusica(nomeMusica);
 
         if(musicaAchada == Object) {
@@ -31,6 +37,13 @@ class Cifra{
         }else{
             this.musica = new Musica(nomeMusica) //caso nao exista cria uma musica com aquele nome
         }
+
+        // if(typeof musicaAchada !== "object") {
+        //     musicaAchada = Musica.buscaMusica(nomeMusica);
+        // }
+        //
+        // let key = musicaAchada.key
+        // musicasRef.child(key).child('/cifras').push(this)
     }
 
     registraAvaliacoes(usuario, nota){

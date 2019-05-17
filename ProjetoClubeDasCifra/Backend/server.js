@@ -78,7 +78,9 @@ app.post('/enviarCifra', (req, res) => {
 
     cifra   = new Cifra(nomeMusica, cifraMusica, autor);
 
+    //busca usuario agora com firebase retorna objeto com usuario e key
     usuario = Usuario.buscaUsuario(autor)
+    //passa a ser usuario.usuario
     usuario.setCifra(nomeMusica);
 
     musica = cifra.musica
@@ -107,9 +109,11 @@ app.post('/registro', (req, res) => {
 app.post('/verificaExistenciaUsuario', (req, res) => {
     let usuario = req.body.usuario
 
+    //agr com firebase buscaUsuario passará a retornar um objeto com usuario e key
     usuarioBackend = Usuario.buscaUsuario(usuario)
 
     console.log(usuarioBackend !== undefined)
+    //devo fazer verificacao com usuarioBackend.usuario
     if(usuarioBackend !== undefined) {
         console.log("ENVIA USUARIO")
         enviaUsuario(res, usuarioBackend)
@@ -124,8 +128,10 @@ app.post('/login', (req, res) => {
     let usuario = req.body.usuario
     let senha   = req.body.senha
 
+    //com o firebase vai passar a ser retornado um objeto com usuario e key
     usuarioBackend = Usuario.verificaUsuario(usuario, senha)
 
+    //irei passar a enviar usuarioBackend.usuario
     enviaUsuario(res, usuarioBackend)
 })
 
