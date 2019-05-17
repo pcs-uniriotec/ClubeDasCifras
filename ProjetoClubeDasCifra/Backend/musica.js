@@ -20,10 +20,18 @@ class Musica{
         db.execute(`INSERT INTO musica (nome) VALUES ("${this.nome}")`)
     }
 
+
+    static removeMusica(nomeMusica) {
+        Musica.musicas.splice(Musica.musicas.indexOf(Musica.musicas.find(musica => musica.nome == nomeMusica)), 1)
+    }
     
     setCifra(cifra){
         this.cifra = cifra
         //addCifra(cifra)
+    }
+
+    getCifra() {
+        return this.cifra
     }
 
     addCifra(cifra){
@@ -43,18 +51,18 @@ class Musica{
 
     static buscaMusica(nome) {
 
-        musicasRef.on("value", function (snapshot) {
-            let keys = Object.keys(snapshot.val())
-            keys.forEach(function (key) {
-                if(snapshot.val()[key].nome == nome){
-                    // return {musica: snapshot.val()[key], key: key}
-                }else{
-                    // return undefined
-                }
-            })
-        }, function(erro) {
-            console.log(erro)
-        })
+        // musicasRef.on("value", function (snapshot) {
+        //     let keys = Object.keys(snapshot.val())
+        //     keys.forEach(function (key) {
+        //         if(snapshot.val()[key].nome == nome){
+        //             // return {musica: snapshot.val()[key], key: key}
+        //         }else{
+        //             // return undefined
+        //         }
+        //     })
+        // }, function(erro) {
+        //     console.log(erro)
+        // })
 
         let musica = Musica.musicas.find(mus => mus.nome === nome)
         return musica;

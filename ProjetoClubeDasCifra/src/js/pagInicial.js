@@ -76,7 +76,7 @@
                 console.log(data)
                 var idToken = data.credential.idToken
                 var usuarioAux = {nome: data.user.displayName, usuario: data.user.displayName, senha:"",
-                                  email: data.user.email, favoritas: [], cifrasCriadas: []}
+                                  email: data.user.email, favoritas: [], cifrasCriadas: [], usuariosSeguidos: []}
 
                 verificaExistenciaUsuario(usuarioAux)
 

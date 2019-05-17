@@ -28,6 +28,10 @@ class Cifra{
         db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.cifra}")`)
     }
 
+    alteraCifra(cifra) {
+        this.cifra = cifra
+    }
+
     verificaExistenciaMusica(nomeMusica) {//verifica se a musica da cifra sendo instanciada ja existe no sistema
         //com o firebase sera retornado um objeto musica key
         let musicaAchada = Musica.buscaMusica(nomeMusica);

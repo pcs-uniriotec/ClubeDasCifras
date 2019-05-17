@@ -25,9 +25,9 @@ app.use(express.urlencoded());
 
 function enviaUsuario(res, usuario) {
     res.json({'nome': usuario.nome, 'usuario': usuario.usuario,'senha': usuario.password,
-        'email': usuario.email, 'favoritas': usuario.getFavoritas(), 'cifrasCriadas': usuario.getCifras()})
+        'email': usuario.email, 'favoritas': usuario.getFavoritas(),
+        'cifrasCriadas': usuario.getCifras(), 'usuariosSeguidos': usuario.getUsuariosSeguidos()})
 }
-
 
 
 app.get('/', (req, res) => {
@@ -67,9 +67,69 @@ app.get('/getEditaPerfil', (req, res) => {
     res.sendFile(caminho + '/html/editaPerfil.html')
 })
 
+app.get('/getEditaCifra', (req, res) => {
+    res.sendFile(caminho + '/html/edicaoCifra.html')
+})
+
+app.get('/getVisitaPerfil', (req, res) => {
+    res.sendFile(caminho + '/html/visitaPerfil.html')
+})
+
+app.get('/getUsuariosSeguidos', (req, res) => {
+    res.sendFile(caminho + '/html/pagUsuariosSeguidos.html')
+})
 
 
 
+
+app.post('/segueUsuario', (req, res) => {
+    const usuario        = req.body.usuario
+    const usuarioSeguido = req.body.usuarioSeguido
+
+    usuarioBackend = Usuario.buscaUsuario(usuario)
+
+    usuarioBackend.addUsuarioSeguido(usuarioSeguido)
+
+    console.log(usuarioBackend)
+    enviaUsuario(res, usuarioBackend)
+
+})
+
+app.post('/buscaUsuario', (req, res) => {
+    const usuario = req.body.usuario
+    console.log("Primeiro")
+    console.log(usuario)
+
+    usuarioBackend = Usuario.buscaUsuario(usuario)
+    console.log("Segundo")
+    console.log(usuarioBackend)
+
+    enviaUsuario(res, usuarioBackend)
+})
+
+app.post('/editaPerfil', (req, res) => {
+    const usuario  = req.body.usuario
+    const nome     = req.body.nome
+    const email    = req.body.email
+    const senha    = req.body.senha
+
+    usuarioBackend = Usuario.buscaUsuario(usuario)
+    usuarioBackend.setNome(nome)
+    usuarioBackend.setEmail(email)
+    usuarioBackend.setSenha(senha)
+
+    enviaUsuario(res, usuarioBackend)
+})
+
+app.post('/editaCifra', (req, res) => {
+    const cifraNome      = req.body.cifraNome
+    const cifraNova      = req.body.cifra
+
+    musica = Musica.buscaMusica(cifraNome)
+    let cifra = musica.getCifra()
+    cifra.alteraCifra(cifraNova)
+    res.redirect('/cifra')
+})
 
 app.post('/enviarCifra', (req, res) => {
     const nomeMusica  = req.body.nomeMusica;
@@ -174,11 +234,16 @@ app.post('/bloqueiaConta', (req, res) => {
 
 app.post('/excluiCifra', (req,res) => {
     let cifraNome = req.body.cifraNome
+    let usuario   = req.body.usuario
 
-    musica = Musica.buscaMusica(cifraNome)
-    musica.setCifra(null)
+    console.log(usuario)
 
-    res.redirect('/')
+    usuarioBackend = Usuario.buscaUsuario(usuario)
+    usuarioBackend.removeCifra(cifraNome)
+
+    Musica.removeMusica(cifraNome)
+    // musica.setCifra(null)
+    enviaUsuario(res, usuarioBackend)
 })
 
 //-------------------------------------------------- banco de daddos -----------------------------

@@ -11,8 +11,21 @@ class Usuario{
         this.senha = senha
         this.email = email
         this.cifras = []
-        this.cifrasFavoritas = [] 
+        this.cifrasFavoritas = []
+        this.usuariosSeguidos = []
         Usuario.addUsuario(this)
+    }
+
+    setNome(nome) {
+        this.nome = nome
+    }
+
+    setEmail(email) {
+        this.email = email
+    }
+
+    setSenha(senha) {
+        this.senha = senha
     }
 
     setCifra(cifra) {
@@ -27,12 +40,31 @@ class Usuario{
         //     })
     }
 
+    addUsuarioSeguido(usuario) {
+        this.usuariosSeguidos.push(usuario)
+    }
+
+    getUsuariosSeguidos() {
+        return this.usuariosSeguidos
+    }
+
+    removeCifra(cifra) {
+        console.log("Indice")
+        console.log(this.cifras.indexOf(cifra))
+        console.log("ARRAY INTEIRO")
+        console.log(this.cifras)
+
+        this.cifras.splice(this.cifras.indexOf(cifra), 1)
+        // Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
+    }
+
     isFavorite(cifra) {
         if(cifrasFavoritas.find(cifra => cifra === cifra) !== null && cifrasFavoritas.find(cifra => cifra === cifra) !== undefined) {
             return true
         }
         return false
     }
+
 
     getFavoritas() {
 
@@ -85,11 +117,14 @@ class Usuario{
     }
 
     static removeUsuario(usuarioNome) {
-        console.log("USUARIOSSSS")
-        console.log(Usuario.usuarios)
+        console.log("POSICAO")
         console.log(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)))
+        console.log("ARRAY TODO")
+        console.log(Usuario.usuarios)
+
+        // Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
         Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
-        console.log(Usuario.usuarios.find(usu => usu.usuario == usuarioNome))
+
 
 
         // usuariosRef.child(key).remove()
@@ -122,20 +157,19 @@ class Usuario{
     }
 
     static buscaUsuario(usuario) {
-        console.log("AGORA")
-        usuariosRef.on("value", function (snapshot) {
-            let keys = Object.keys(snapshot.val())
-            keys.forEach(function (key) {
-                if(snapshot.val()[key].nome == usuario){
-                    // return {usuario: snapshot.val()[key], key: key}
-                }else{
-                    // return undefined
-                }
-            })
-        }, function(erro) {
-            console.log(erro)
-        })
-
+        // console.log("AGORA")
+        // usuariosRef.on("value", function (snapshot) {
+        //     let keys = Object.keys(snapshot.val())
+        //     keys.forEach(function (key) {
+        //         if(snapshot.val()[key].nome == usuario){
+        //             // return {usuario: snapshot.val()[key], key: key}
+        //         }else{
+        //             // return undefined
+        //         }
+        //     })
+        // }, function(erro) {
+        //     console.log(erro)
+        // })
 
         return Usuario.usuarios.find(usu => usu.usuario == usuario)
     }

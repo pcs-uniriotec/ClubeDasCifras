@@ -7,7 +7,7 @@
         let email    = $('input[name="email"]').val()
 
         setUsuario({'nome': nome, 'usuario': username, 'senha': password, 'email': email, 'favoritas': [],
-            'cifrasCriadas': []})
+            'cifrasCriadas': [], 'usuariosSeguidos': []})
     })
 
 

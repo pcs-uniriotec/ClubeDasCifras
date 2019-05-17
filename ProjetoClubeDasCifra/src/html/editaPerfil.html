@@ -10,12 +10,24 @@
         <a href="/">Voltar à página inicial</a>
         <h1>SEU PERFIL!</h1>
 
+        <label for="edita-nome">Nome</label><br>
+        <input type="text" name="edita-nome" id="edita-nome"><br>
+        <label for="edita-email">Email</label><br>
+        <input type="email" name="edita-email" id="edita-email"><br>
+        <label for="edita-senha">Senha</label><br>
+        <input type="password" name="edita-senha" id="edita-senha"><br>
+        <label for="confirma-senha">Confirmação de senha</label><br>
+        <input type="password" name="confirma-senha" id="confirma-senha"><br>
+        <input type="submit" id="conclui-edicoes" value="enviar"><br><br><br>
+
         <button id="exclui-conta">REQUISITAR EXCLUSAO DE CONTA!!!</button>
     </div>
 
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/cifra.js"></script>
+    <script src="../js/usuario.js"></script>
     <script src="../js/editaPerfil.js"></script>
 
 </body>
