@@ -1,8 +1,7 @@
 
 const server             = require('./iniciaFirebase.js')
 
-const firebaseAdmin = server.firebase
-const database      = firebaseAdmin.database()
+const database = server.firebase
 const usuariosRef   = database.ref("/Usuarios")
 
 class Usuario{
@@ -18,6 +17,14 @@ class Usuario{
 
     setCifra(cifra) {
         this.cifras.push(cifra);
+
+        // usuariosRef.child(key).child('/cifrasCriadas').push(cifra)
+        //     .then(function() {
+        //
+        //     })
+        //     .catch(function (erro) {
+        //         console.log(erro)
+        //     })
     }
 
     isFavorite(cifra) {
@@ -28,15 +35,41 @@ class Usuario{
     }
 
     getFavoritas() {
+
+        // usuariosRef.on("value", function (snapshot) {
+        //
+        //     return snapshot.val()[key].favoritas
+        // }, function(erro) {
+        //     console.log(erro)
+        // })
+
         return this.cifrasFavoritas
     }
 
     getCifras() {
+
+        // usuariosRef.on("value", function (snapshot) {
+        //
+        //     return snapshot.val()[key].cifrasCriadas
+        // }, function(erro) {
+        //     console.log(erro)
+        // })
+
         return this.cifras
     }
 
     addFavorita(cifra){
            this.cifrasFavoritas.push(cifra)
+
+        // usuariosRef.child(key).child('/favoritas').push(cifra)
+        //     .then(function() {
+        //
+        //     })
+        //     .catch(function (erro) {
+        //         console.log(erro)
+        //     })
+
+
     }
 
     static addUsuario(usuario) {
@@ -57,13 +90,53 @@ class Usuario{
         console.log(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)))
         Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
         console.log(Usuario.usuarios.find(usu => usu.usuario == usuarioNome))
+
+
+        // usuariosRef.child(key).remove()
+        //     .then(function() {
+        //
+        //     })
+        //     .catch(function (erro) {
+        //         console.log(erro)
+        //     })
+
     }
 
     static verificaUsuario(usuario, senha) {
+
+        usuariosRef.on("value", function (snapshot) {
+            let keys = Object.keys(snapshot.val())
+            keys.forEach(function (key) {
+                if(snapshot.val()[key].nome == usuario && snapshot.val()[key].senha == senha){
+                    // return snapshot.val()[key]
+                }else{
+                    // return undefined
+                }
+            })
+        }, function(erro) {
+            console.log(erro)
+        })
+
+
         return Usuario.usuarios.find(usu => usu.usuario == usuario && usu.senha == senha)
     }
 
     static buscaUsuario(usuario) {
+        console.log("AGORA")
+        usuariosRef.on("value", function (snapshot) {
+            let keys = Object.keys(snapshot.val())
+            keys.forEach(function (key) {
+                if(snapshot.val()[key].nome == usuario){
+                    // return {usuario: snapshot.val()[key], key: key}
+                }else{
+                    // return undefined
+                }
+            })
+        }, function(erro) {
+            console.log(erro)
+        })
+
+
         return Usuario.usuarios.find(usu => usu.usuario == usuario)
     }
 

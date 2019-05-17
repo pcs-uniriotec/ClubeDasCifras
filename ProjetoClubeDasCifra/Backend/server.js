@@ -5,19 +5,11 @@ const Usuario            = require('./usuario.js')
 let path                 = require('path');
 const Musica             = require('./musica')
 const bodyParser         = require('body-parser')
-const admin              = require('firebase-admin')
-const serviceAccount     = require(path.join(__dirname, "../projetoclubedascifras-firebase-adminsdk-lvner-5d61655a42.json"))
-
-// var firebaseAdmin = admin.initializeApp({
-//     credential: admin.credential.cert(serviceAccount),
-//     databaseURL: 'https://projetoclubedascifras.firebaseio.com'
-// })
-//
-// const database = firebaseAdmin.database()
 
 const app  = express();
 const port = 8082;
 let db     = null;
+
 
 let caminho        = path.join(__dirname, '../src');
 var cifra          = null;
@@ -102,10 +94,10 @@ app.post('/buscaCifra', (req, res) => {
 })
 
 app.post('/registro', (req, res) => {
-    let nome    = req.body.nome
-    let usuario = req.body.usuario
-    let senha   = req.body.senha
-    let email   = req.body.email
+    let nome           = req.body.nome
+    let usuario        = req.body.usuario
+    let senha          = req.body.senha
+    let email          = req.body.email
 
     usuarioBackend = new Usuario(nome, usuario, senha, email)
 

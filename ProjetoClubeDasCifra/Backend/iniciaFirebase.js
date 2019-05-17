@@ -9,4 +9,4 @@ var firebaseAdmin = admin.initializeApp({
 
 const database = firebaseAdmin.database()
 
-module.exports = {firebase: firebaseAdmin}
+module.exports = {firebase: database}
