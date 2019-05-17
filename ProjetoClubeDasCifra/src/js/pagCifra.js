@@ -18,6 +18,7 @@
         cifraNome   = getCifra()
         $.post("/registraNota", {usuarioNome: usuario.usuario, cifraNome: cifraNome, nota: notaInput.val()}, function(data){
         })
+        window.location.reload()
     })
 
     botaoComentar.click(function(e) {
@@ -29,6 +30,8 @@
         if(comentario !== null && comentario !== undefined) {
             $.post("/registraComentario", {usuarioNome: usuario.usuario, cifraNome: cifraNome, comentario: comentario}, function(data) {
             })
+            comentarioInput.val('')
+            window.location.reload()
         }
     })
 
