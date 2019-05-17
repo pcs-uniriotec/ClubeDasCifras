@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/DanielCoelho97/ProjetoClubeDasCifra#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "firebase": "^5.11.1",
+    "firebase-admin": "^7.3.0",
     "mdbootstrap": "^4.8.1",
     "mysql": "^2.16.0"
   }

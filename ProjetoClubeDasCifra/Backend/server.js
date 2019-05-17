@@ -5,6 +5,15 @@ const Usuario            = require('./usuario.js')
 let path                 = require('path');
 const Musica             = require('./musica')
 const bodyParser         = require('body-parser')
+const admin              = require('firebase-admin')
+const serviceAccount     = require(path.join(__dirname, "../projetoclubedascifras-firebase-adminsdk-lvner-5d61655a42.json"))
+
+// var firebaseAdmin = admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//     databaseURL: 'https://projetoclubedascifras.firebaseio.com'
+// })
+//
+// const database = firebaseAdmin.database()
 
 const app  = express();
 const port = 8082;
@@ -205,5 +214,6 @@ async function startup() {
 //servidor responde na porta x
 
 startup();
+
 
 

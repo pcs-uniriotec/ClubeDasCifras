@@ -1,3 +1,10 @@
+
+const server             = require('./iniciaFirebase.js')
+
+const firebaseAdmin = server.firebase
+const database      = firebaseAdmin.database()
+const usuariosRef   = database.ref("/Usuarios")
+
 class Usuario{
     constructor(nome, usuario, senha, email) {
         this.nome = nome
@@ -34,6 +41,14 @@ class Usuario{
 
     static addUsuario(usuario) {
         Usuario.usuarios.push(usuario)
+
+        usuariosRef.push(usuario)
+            .then( function() {
+                console.log("Funciona")
+            })
+            .catch( function(erro) {
+                console.log(erro)
+            })
     }
 
     static removeUsuario(usuarioNome) {
