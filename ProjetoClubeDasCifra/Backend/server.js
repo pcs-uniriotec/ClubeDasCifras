@@ -152,7 +152,12 @@ app.post('/buscaCifra', (req, res) => {
     const nomeMusica = req.body.musica
     musica = Musica.buscaMusica(nomeMusica);
 
-    res.json({nome: musica.nome, cifra: musica.cifra.cifra, media: musica.cifra.calculaMedia(), comentarios: musica.cifra.getComentarios()})
+    if(musica == undefined) {
+        res.send(undefined)
+    }else {
+        res.json({nome: musica.nome, cifra: musica.cifra.cifra, media: musica.cifra.calculaMedia(), comentarios: musica.cifra.getComentarios()})
+    }
+
 })
 
 app.post('/registro', (req, res) => {

@@ -29,13 +29,19 @@
         let musica = getCifra()
 
         $.post("/buscaCifra", {musica: musica}, function(data) {
-            $('#nomeMusica').html(data.nome)
-            $('#cifra').html(data.cifra)
-            $('#nota').html(data.media)
+            console.log(data)
+            if(typeof data !== "object") {
+                window.location = '/'
+                console.log(data)
+            }else {
+                $('#nomeMusica').html(data.nome)
+                $('#cifra').html(data.cifra)
+                $('#nota').html(data.media)
 
-            $.each(data.comentarios, function(i) {
-                montaComentario(this)
-            })
+                $.each(data.comentarios, function(i) {
+                    montaComentario(this)
+                })
+            }
         })
     });
 
