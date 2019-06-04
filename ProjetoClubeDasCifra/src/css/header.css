@@ -18,7 +18,7 @@
 
 #usuario {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 #cadastro {
@@ -67,4 +67,10 @@
     margin-top: 30px;
     margin-bottom: 30px;
     positon :relative;
+}
+
+#nomeMusica{
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+
 }
