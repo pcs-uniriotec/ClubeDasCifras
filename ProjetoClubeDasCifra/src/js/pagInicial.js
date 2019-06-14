@@ -16,6 +16,8 @@
 
     $(document).ready(function() {      //roda quando a pagina termina de carregar
         verificaUsuario()
+        buscaCifrasRankeadasPorNota()
+        buscaCifrasRecentes()
     })
 
     function verificaUsuario() {                                     //verifica se usuario esta logado e conforme for faz alterações na página
@@ -100,7 +102,53 @@
 
             verificaUsuario()
         })
+    }
 
+    function buscaCifrasRankeadasPorNota() {
+        $.post('/buscaCifrasMelhoresNotas', {}, function(data) {
+            if(typeof data !== "object") {
+                console.log("undefined")
+            }else {
+                console.log("ta entranu aqui")
+                console.log(data)
+                adicionaCifrasRankeadasPorNota(data)
+            }
+        })
+    }
+
+    function adicionaCifrasRankeadasPorNota(data) {
+        console.log(data)
+        for(let i = 0; i <= 4; i++) {
+            $(`
+                <br>
+                <a href="/cifra"  onclick="localStorage.setItem('cifra', '${data.rankingCifras[i].nome}')">
+                ${data.rankingCifras[i].nome}  <br> nota: ${data.rankingCifras[i].nota}</a>
+                <br>
+            `).appendTo($('#melhores-cifras'))
+        }
+    }
+
+    function buscaCifrasRecentes() {
+        $.post('/buscaCifrasRecentes', {}, function(data) {
+            if(typeof data !== "object") {
+                console.log("undefined")
+            }else {
+                console.log(data)
+                adicionaCifrasRecentes(data)
+            }
+        })
+    }
+
+    function adicionaCifrasRecentes(data) {
+        console.log(data)
+        for(let i = 0; i <= 4; i++) {
+            $(`
+                <br>
+                <a href="/cifra"  onclick="localStorage.setItem('cifra', '${data.cifrasRecentes[i].nome}')">
+                ${data.cifrasRecentes[i].nome}
+                <br>
+            `).appendTo($('#cifras-recentes'))
+        }
     }
     
     

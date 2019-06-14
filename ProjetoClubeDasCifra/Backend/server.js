@@ -160,6 +160,27 @@ app.post('/buscaCifra', (req, res) => {
 
 })
 
+app.post('/buscaCifrasMelhoresNotas', (req, res) => {
+    let rankingCifras = Cifra.getCifrasMelhoresNotas();
+
+    if(rankingCifras.length > 0) {
+        res.json({rankingCifras: rankingCifras})
+    }else {
+        res.send(undefined)
+    }
+})
+
+app.post('/buscaCifrasRecentes', (req, res) => {
+    let cifrasRecentes = Cifra.getCifrasCriadasRecentes()
+    console.log("EUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+    console.log(cifrasRecentes)
+    if(cifrasRecentes.length > 0) {
+        res.json({cifrasRecentes: cifrasRecentes})
+    }else {
+        res.send(undefined)
+    }
+})
+
 app.post('/registro', (req, res) => {
     let nome           = req.body.nome
     let usuario        = req.body.usuario

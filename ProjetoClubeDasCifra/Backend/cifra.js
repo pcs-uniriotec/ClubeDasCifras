@@ -15,17 +15,7 @@ class Cifra{
         this.comentarios = []
         this.verificaExistenciaMusica(nomeMusica)//inverti a ordem mas acho q n vai legar
         this.musica.setCifra(this)
-
-        // if(db.execute(`SELECT * FROM musica WHERE nome = "${this.nome}"`) == false){
-        //     Musica = new musica(this.nome)
-        // }
-
-        //criaCifraBd()
-    }
-
-    //cria a cifra no banco refereciando a musica
-    criaCifraBd(){
-        db.execute(`INSERT INTO cifra (nome,musica) VALUES ("${this.nome}", "${this.cifra}")`)
+        Cifra.atualizacifrasCriadasRecentes(this.musica.nome)
     }
 
     alteraCifra(cifra) {
@@ -48,6 +38,18 @@ class Cifra{
         //
         // let key = musicaAchada.key
         // musicasRef.child(key).child('/cifras').push(this)
+    }
+
+    static getCifrasCriadasRecentes() {
+        return Cifra.cifrasCriadasRecentes
+    }
+
+    static atualizacifrasCriadasRecentes(nomeMusica) {
+        Cifra.cifrasCriadasRecentes.splice(0, 0, {nome: nomeMusica})
+
+        if(Cifra.cifrasCriadasRecentes.length > 10) {
+            Cifra.cifrasCriadasRecentes.splice(10, 0)
+        }
     }
 
     registraAvaliacoes(usuario, nota){
@@ -74,7 +76,40 @@ class Cifra{
             console.log("TOTALLL")
             console.log("Total"+ this.total)
         }
+        Cifra.rankeiaCifras(this.musica.nome, this.calculaMedia())
+    }
 
+    static rankeiaCifras(nomeMusica, total) {
+        if(Cifra.rankingCifrasNota.length === 0) {
+            console.log("entrou onde devia")
+            Cifra.rankingCifrasNota.push({nome: nomeMusica, nota: total})
+        }else {
+            let cifra = Cifra.rankingCifrasNota.find(cifra => cifra.nome === nomeMusica)
+            if(cifra) {
+                let posicao = Cifra.rankingCifrasNota.indexOf(cifra)
+                Cifra.rankingCifrasNota.splice(posicao, 1)
+            }
+            let verificaEntrada
+            for(let i = Cifra.rankingCifrasNota.length - 1; i >= 0; i--) {
+
+                if(Cifra.rankingCifrasNota[i].nota > total) {
+                    Cifra.rankingCifrasNota.splice(i + 1, 0, {nome: nomeMusica, nota: total})
+                    i = -1
+                    verificaEntrada = true
+                    break;
+                }
+            }
+            if(!verificaEntrada) {
+                Cifra.rankingCifrasNota.splice(0, 0, {nome: nomeMusica, nota: total})
+            }
+            if(Cifra.rankingCifrasNota.length > 10) {
+                Cifra.rankingCifrasNota.splice(10, 1)
+            }
+        }
+    }
+
+    static getCifrasMelhoresNotas() {
+        return Cifra.rankingCifrasNota
     }
 
     calculaMedia(){
@@ -104,5 +139,6 @@ class Cifra{
     }
 
 }
-
+Cifra.rankingCifrasNota = []
+Cifra.cifrasCriadasRecentes = []
 module.exports = Cifra
