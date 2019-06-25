@@ -12,13 +12,17 @@
     const botaoBuscaCifra     = $('input[name="busca"]')
     const inputBuscaMusica    = $('#musica')
     const botaoLoginComGoogle = $('#google-login')
-
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
     $(document).ready(function() {      //roda quando a pagina termina de carregar
         verificaUsuario()
         buscaCifrasRankeadasPorNota()
         buscaCifrasRecentes()
     })
+
+    //update do firestore
+    db.settings({timestampsInSnapshots:true});
 
     function verificaUsuario() {                                     //verifica se usuario esta logado e conforme for faz alterações na página
         usuario = getUsuario()
@@ -87,6 +91,7 @@
                 console.log(error)
             })
     })
+
 
     function verificaExistenciaUsuario(usuarioAux) {
 

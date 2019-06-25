@@ -21,33 +21,36 @@
   </style>
 </head>
 <body>
-  <div class="signup-form">
-      <div>
-        <!--<form action="/enviarCifra" method="POST">-->
-        <form class="form-control:focus">
-          <h2> Insira sua <b>cifra!</b> </h2>
+<div class="signup-form">
+    <div class="row">
+    </div>
+    <form class="form-control:focus">
+      <h2> Insira sua <b>cifra!</b> </h2>
           <div class="form-group">
+
             <div class="row">
               <input type="text" name="nome-musica" class="form-control" id="nomeMusica" placeholder="Nome da musica" required="necessário">
             </div>
+
           </div>
           <div class="form-group">
             <div class="row">
-              <textarea id="cifra" class="form-control" name="cifra" cols="50" rows="30"required placeholder="letra com cifra"></textarea>
+              <textarea id="cifra" class="form-control" name="cifra" cols="30" rows="23"required placeholder="letra com cifra"></textarea>
+
             </div>
           </div>
-          <!--<input type="submit" value="Criar" name="envCifra">-->
-          <div class="form-group social-btn clearfix">
-          <button class="btn btn-default btn-lg btn-block" name="cria-cifra" id="cria-cifra-id">Criar Cifra</button>
-          </div>
+          <div class="form-group">
+            <div class="row">
 
-          <div class="form-group social-btn clearfix">
-            <a class="btn btn-default btn-lg btn-block" style="color: black" href="/">Voltar para página inicial</a>
+            </div>
           </div>
+      <div class="form-group social-btn clearfix">
+        <button class="btn btn-success btn-lg btn-block" name="cria-cifra" id="cria-cifra-id" >Criar Cifra</button>
+        <a class="btn btn-primary btn-lg btn-block " style="color: white" href="/" role="button">Voltar para página inicial</a>
       </div>
         </form>
-      <!--</form>-->
-  </div>
+</div>
+</div>
 
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

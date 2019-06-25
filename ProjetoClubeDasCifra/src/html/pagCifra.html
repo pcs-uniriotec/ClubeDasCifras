@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Cifra</title>
-    <link rel="stylesheet" href="../css/corpo.css">
-    <link rel="stylesheet" href="../css/cadastro.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/corpo.css">
+    <link rel="stylesheet" href="../css/header.css">
     
     <style>
         body {
@@ -34,39 +36,59 @@
 
 </head>
 <body>
-
-    <a href="/">Voltar a página inicial</a>
-
-    <h1 id="nomeMusica"></h1>
-    <button name="favorita-cifra" id="favorita-cifra">Favoritar Cifra</button>
+<div class="form-group">
+    <div class="form-inline"><br></div>
+    <div class="container">
+    <form class="form-control:focus">
+    <h1 style="font-size: 26px; color: black" id="nomeMusica"><b></b></h1>
+<br>
+        <div class="form-group">
+            <a class="btn btn-primary" href="/">Voltar a página inicial</a>
+    <button name="favorita-cifra" class="btn btn-info" id="favorita-cifra">Favoritar Cifra</button>
+            <a class="btn btn-warning " href="/getEditaCifra" id="edita-cifra"  role="button">Editar Cifra</a>
     <br><br>
-    <div id="opcoes-criador">
-        <button id="exclui-cifra">Excluir Cifra</button>
-        <br><br>
-        <a href="/getEditaCifra" id="edita-cifra">Editar Cifra</a>
+    <div  class="form-group"  id="opcoes-criador">
+        <button  id="exclui-cifra" class="btn btn-danger">Excluir Cifra</button><br><br>
+    </div>
     </div>
 
-    <pre id="cifra"></pre>
+    <pre class="form-group" id="cifra"></pre>
 
-
-    <form name="nota">
+    <form class="form-control:focus" name="nota">
         <p>Nota: <span id="nota"></span></p>
+        <div class="form-inline">
+            <div class="form-group">
         <input type="range" name="nota-input-name" id="nota-input-id" min="0" max="5">
-        <output name="nota-output-name" id="nota-output-id">3</output>
-        <button name="envia-nota" id="envia-nota">Dar Nota</button>
+        </div>
+        </div>
+        <div class="form-inline">
+        <output style="font-size: 25px;" name="nota-output-name" id="nota-output-id">3</output>
+        </div>
+        <div class="form-inline">
+        <button name="envia-nota" class="btn btn-success " id="envia-nota">Dar Nota</button>
+        </div>
     </form>
 
-    <form action="">
-        <p>COMENTE!</p>
+        <form class="form-control:focus" action="">
+            <br>
+            <p>COMENTE!</p>
+            <div class="form-inline">
         <textarea name="comentario-input" id="comentario-input" cols="50" rows="3"></textarea>
-        <button name="cria-comentario" id="cria-comentario">Comentar</button>
-    </form>
+            </div>
+            <div class="form-inline">
+        <button class="btn btn-info" name="cria-comentario" id="cria-comentario">Comentar</button>
+            </div>
 
     <p>------------------------------------------------------------------------------------------</p>
 
-    <div id="espaco-comentarios">
+    </form>
+    </form>
+
+</div>
+    <div class="container" id="espaco-comentarios">
         <p id="comentario"></p>
     </div>
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
