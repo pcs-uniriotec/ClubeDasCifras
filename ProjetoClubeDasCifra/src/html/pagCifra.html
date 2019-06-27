@@ -36,6 +36,8 @@
 
 </head>
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.3"></script>
 <div class="form-group">
     <div class="form-inline"><br></div>
     <div class="container">
@@ -43,10 +45,14 @@
     <h1 style="font-size: 26px; color: black" id="nomeMusica"><b></b></h1>
 <br>
         <div class="form-group">
-            <a class="btn btn-primary" href="/">Voltar a página inicial</a>
+            <a class="btn btn-danger" href="/">Voltar a página inicial</a>
     <button name="favorita-cifra" class="btn btn-info" id="favorita-cifra">Favoritar Cifra</button>
             <a class="btn btn-warning " href="/getEditaCifra" id="edita-cifra"  role="button">Editar Cifra</a>
-    <br><br>
+            <a class ="btn btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=clubedascifras.firebaseapp.com" target="_blank" role="button">
+                Compartilhar
+            </a>
+            <br><br>
+
     <div  class="form-group"  id="opcoes-criador">
         <button  id="exclui-cifra" class="btn btn-danger">Excluir Cifra</button><br><br>
     </div>
@@ -77,6 +83,7 @@
             </div>
             <div class="form-inline">
         <button class="btn btn-info" name="cria-comentario" id="cria-comentario">Comentar</button>
+
             </div>
 
     <p>------------------------------------------------------------------------------------------</p>
