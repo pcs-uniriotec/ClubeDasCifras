@@ -2,14 +2,25 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Editar</title>
     <link rel="stylesheet" href="../css/corpo.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/corpo.css">
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
     <div class="container">
-        <a href="/">Voltar à página inicial</a>
         <h1>EDITE SEU PERFIL!</h1>
-
+<br>
+        <label >Foto</label><br>
+        <input name="image-upload" type="file" class="file-input" />
+<br>
         <label for="edita-nome">Nome</label><br>
         <input type="text" name="edita-nome" id="edita-nome"><br>
         <label for="edita-email">Email</label><br>
@@ -18,10 +29,14 @@
         <input type="password" name="edita-senha" id="edita-senha"><br>
         <label for="confirma-senha">Confirmação de senha</label><br>
         <input type="password" name="confirma-senha" id="confirma-senha"><br>
-        <input type="submit" id="conclui-edicoes" value="enviar"><br><br><br>
+        <input class="btn btn-default" type="submit" id="conclui-edicoes" value="enviar"><br><br><br>
 
-        <button id="exclui-conta">REQUISITAR EXCLUSAO DE CONTA!!!</button>
+        <button class="btn btn-default btn-lg btn-block" id="exclui-conta">REQUISITAR EXCLUSAO DE CONTA!!!</button>
+        <div class="form-group social-btn clearfix">
+            <a class="btn btn-default btn-lg btn-block" style="color: black" href="/">Voltar para página inicial</a>
+        </div>
     </div>
+
 
 
 
@@ -29,6 +44,7 @@
     <script src="../js/cifra.js"></script>
     <script src="../js/usuario.js"></script>
     <script src="../js/editaPerfil.js"></script>
+<script src="../js/imgScripts.js"></script>
 
 </body>
 </html>
