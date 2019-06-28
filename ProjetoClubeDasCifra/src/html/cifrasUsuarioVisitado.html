@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Perfil</title>
+
+    <title>Clube das Cifras</title>
     <link rel="stylesheet" href="../css/corpo.css">
     <link rel="stylesheet" href="../css/perfil.css">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -14,48 +15,27 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/corpo.css">
     <link rel="stylesheet" href="../css/header.css">
-    <style>
-        .invisible {
-            visibility: hidden;
-        }
-    </style>
 </head>
 <body>
-
 <div class="container">
-    <a href="/">Voltar à página inicial</a>
-    <h1>PERFIL</h1>
+    <h1>CIFRAS CRIADAS</h1>
 
-    <h2>Nome: <span id="nome"></span></h2>
-    <h3>Usuário: <span id="usuario"></span></h3>
-    <h3>email: <span id="email"></span></h3>
-
-    <button id="seguir">Seguir</button>
-    <br>
-    <br><br>
-    <a href="/getCifrasUsuarioVisitado">Cifras Enviadas pelo usuário</a>
-    <br><br>
-    <a href="/getCifrasFavoritasVisitado">Cifras Favoritadas pelo usuário</a>
-    <br><br>
-
-    <textarea name="comentario-input" id="comentario-input" cols="50" rows="3"></textarea>
-    <button id="botao-comentar">Comentar</button>
-
-    <p>---------------------------------------------------------------------------------------------</p>
-    <br>
-
-    <div id="espaco-comentarios">
-
+    <div id="cifras-criadas"></div>
+    <div class="form-group social-btn clearfix">
+        <a class="btn btn-default btn-lg btn-block" style="color: black" href="/">Voltar para página inicial</a>
     </div>
 
-
 </div>
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="../js/cifra.js"></script>
 <script src="../js/usuario.js"></script>
-<script src="../js/visitaPerfil.js"></script>
+<script src="../js/cifrasUsuarioVisitado.js"></script>
+
 
 </body>
 </html>

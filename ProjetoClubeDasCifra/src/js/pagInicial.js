@@ -19,6 +19,7 @@
         verificaUsuario()
         buscaCifrasRankeadasPorNota()
         buscaCifrasRecentes()
+        buscaRankingUsuarios()
     })
 
     //update do firestore
@@ -153,6 +154,33 @@
                 ${data.cifrasRecentes[i].nome}
                 <br>
             `).appendTo($('#cifras-recentes'))
+        }
+    }
+
+    function buscaRankingUsuarios() {
+        console.log("AQUI 1")
+        $.post('/buscaRankingUsuarios', {}, function(data) {
+            console.log("OPA, MEU BOM")
+            if(typeof data !== "object") {
+                console.log("undefined")
+            }else {
+                adicionaRankingUsuarios(data)
+            }
+        })
+    }
+
+    function adicionaRankingUsuarios(data) {
+        console.log("OPA, AQUI TBM")
+        for(let i = 0; i <= 2; i++) {
+            $(`
+                <br>
+                <a href="/getVisitaPerfil"  onclick="localStorage.setItem('usuarioVisitado', '${data.ranking[i].nome}')">
+                ${data.ranking[i].nome} <br>
+                Quantidade de cifras: ${data.ranking[i].totalCifras}
+                </a>
+                <br>
+                
+            `).appendTo($('#melhores-colaboradores'))
         }
     }
     

@@ -2,7 +2,11 @@
     const elementoNome        = $('#nome')
     const elementoUsuario     = $('#usuario')
     const elementoEmail       = $('#email')
-    const botaoSeguir = $('#seguir')
+    const botaoSeguir         = $('#seguir')
+    const botaoComentar       = $('#botao-comentar')
+    const comentarioInput     = $('#comentario-input')
+
+    var usuarioPerfil
 
     $(document).ready(function() {
         usuario = getUsuario()
@@ -19,15 +23,31 @@
             botaoSeguir.addClass('invisible')
         }
 
-        console.log("NOME")
-        console.log(usuarioVisitado)
         $.post('/buscaUsuario', {usuario: usuarioVisitado}, function(data) {
             elementoNome.html(data.nome)
             elementoUsuario.html(data.usuario)
             elementoEmail.html(data.email)
+
+            $.each(data.comentariosPerfil, function(i) {
+                montaComentario(this)
+            })
         })
 
     })
+
+    function montaComentario(comentario) {
+
+        $(`
+                <h4 class="usuario-nome">
+                <a href="/getVisitaPerfil" 
+                   onclick="localStorage.setItem('usuarioVisitado', '${comentario.usuarioNome}')">${comentario.usuarioNome}</a>
+                    comentou:
+                </h4>
+                <br>
+                <p class="usuario-coment">${comentario.comentario}</p>
+                <p>-----------------------------------------------</p>
+          `).appendTo($('#espaco-comentarios'))
+    }
 
 
     botaoSeguir.click(function () {
@@ -39,6 +59,21 @@
             console.log(data)
             console.log(getUsuario())
         })
+    })
+
+    botaoComentar.click(function (e) {
+        e.preventDefault()
+
+        usuario    = getUsuario()
+        comentario = comentarioInput.val()
+
+        if(comentario !== null && comentario !== undefined) {
+            $.post("/registraComentarioPerfil", {usuarioComenta: usuario.usuario, perfilComentado: usuarioVisitado , comentario: comentario},
+                function(data) {
+            })
+            comentarioInput.val('')
+            window.location.reload()
+        }
     })
 
 

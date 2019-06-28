@@ -26,7 +26,8 @@ app.use(express.urlencoded());
 function enviaUsuario(res, usuario) {
     res.json({'nome': usuario.nome, 'usuario': usuario.usuario,'senha': usuario.password,
         'email': usuario.email, 'favoritas': usuario.getFavoritas(),
-        'cifrasCriadas': usuario.getCifras(), 'usuariosSeguidos': usuario.getUsuariosSeguidos()})
+        'cifrasCriadas': usuario.getCifras(), 'usuariosSeguidos': usuario.getUsuariosSeguidos(),
+        'comentariosPerfil': usuario.getComentariosPerfil()})
 }
 
 
@@ -79,8 +80,42 @@ app.get('/getUsuariosSeguidos', (req, res) => {
     res.sendFile(caminho + '/html/pagUsuariosSeguidos.html')
 })
 
+app.get('/getCifrasUsuarioVisitado', (req, res) => {
+    res.sendFile(caminho + '/html/cifrasUsuarioVisitado.html')
+})
+
+app.get('/getCifrasFavoritasVisitado', (req, res) => {
+    res.sendFile(caminho + '/html/cifrasFavoritasVisitado.html')
+})
 
 
+
+app.post('/buscaRankingUsuarios', (req, res) => {
+    res.json({ranking: Usuario.getRankingUsuarios()})
+})
+
+app.post('/buscaCifrasFavoritasVisitado', (req, res) => {
+    const usuarioVisitado = req.body.usuarioVisitado
+
+    usuarioBackend = Usuario.buscaUsuario(usuarioVisitado)
+    res.json({favoritas: usuarioBackend.getFavoritas()})
+})
+
+app.post('/buscaCifrasUsuarioVisitado', (req, res) => {
+    const usuarioVisitado = req.body.usuarioVisitado
+
+    usuarioBackend = Usuario.buscaUsuario(usuarioVisitado)
+    res.json({listaCifras: usuarioBackend.getCifras()})
+})
+
+app.post('/registraComentarioPerfil', (req, res) => {
+    const usuarioComenta  = req.body.usuarioComenta
+    const perfilComentado = req.body.perfilComentado
+    const comentario      = req.body.comentario
+
+    usuarioBackend = Usuario.buscaUsuario(perfilComentado)
+    usuarioBackend.addComentarioPerfil(usuarioComenta, comentario)
+})
 
 app.post('/segueUsuario', (req, res) => {
     const usuario        = req.body.usuario
@@ -97,12 +132,8 @@ app.post('/segueUsuario', (req, res) => {
 
 app.post('/buscaUsuario', (req, res) => {
     const usuario = req.body.usuario
-    console.log("Primeiro")
-    console.log(usuario)
 
     usuarioBackend = Usuario.buscaUsuario(usuario)
-    console.log("Segundo")
-    console.log(usuarioBackend)
 
     enviaUsuario(res, usuarioBackend)
 })

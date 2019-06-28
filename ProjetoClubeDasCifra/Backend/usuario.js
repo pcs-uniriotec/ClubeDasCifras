@@ -13,7 +13,51 @@ class Usuario{
         this.cifras = []
         this.cifrasFavoritas = []
         this.usuariosSeguidos = []
+        this.comentariosPerfil = []
         Usuario.addUsuario(this)
+    }
+
+    static rankeiaUsuarios(usuario) {
+        //let usuario = Usuario.buscaUsuario(nomeUsuario)
+
+        if(Usuario.rankingQuantidadeCifras.length === 0) {
+            Usuario.rankingQuantidadeCifras.push({nome: usuario.usuario, totalCifras: usuario.cifras.length})
+        }else {
+            console.log("AGORA ELE ENTRA AQUI!!!!!")
+            let usuarioLista = Usuario.rankingQuantidadeCifras.find(usu => usu.nome === usuario.usuario)
+            console.log(usuarioLista)
+            if(usuarioLista) {
+                let posicao      = Usuario.rankingQuantidadeCifras.indexOf(usuarioLista)
+                console.log("POSICAO"+ posicao)
+                Usuario.rankingQuantidadeCifras.splice(posicao, 1)
+            }
+            console.log(Usuario.rankingQuantidadeCifras)
+            let verificaEntrada
+            for(let i = Usuario.rankingQuantidadeCifras.length - 1; i >= 0; i--) {
+                console.log("RODA?")
+                if(Usuario.rankingQuantidadeCifras[i].totalCifras > usuario.cifras.length) {
+                    Usuario.rankingQuantidadeCifras.splice(i + 1, 0, {nome: usuario.usuario, totalCifras: usuario.cifras.length})
+                    i = -1
+                    verificaEntrada = true
+                    break
+                }
+                // if(i == 0) {
+                //     Usuario.rankingQuantidadeCifras.splice(0, 0, {nome: usuario.usuario, totalCifras: usuario.cifras.length})
+                // }
+            }
+
+            if(verificaEntrada !== true) {
+                Usuario.rankingQuantidadeCifras.splice(0, 0, {nome: usuario.usuario, totalCifras: usuario.cifras.length})
+            }
+
+            if(Usuario.rankingQuantidadeCifras.length > 10) {
+                Usuario.rankingQuantidadeCifras.splice(10, 1)
+            }
+        }
+    }
+
+    static getRankingUsuarios() {
+        return Usuario.rankingQuantidadeCifras
     }
 
     setNome(nome) {
@@ -30,6 +74,7 @@ class Usuario{
 
     setCifra(cifra) {
         this.cifras.push(cifra);
+        Usuario.rankeiaUsuarios(this)
 
         // usuariosRef.child(key).child('/cifrasCriadas').push(cifra)
         //     .then(function() {
@@ -38,6 +83,14 @@ class Usuario{
         //     .catch(function (erro) {
         //         console.log(erro)
         //     })
+    }
+
+    addComentarioPerfil(usuarioNome, comentario) {
+        this.comentariosPerfil.push({usuarioNome: usuarioNome, comentario: comentario})
+    }
+
+    getComentariosPerfil() {
+        return this.comentariosPerfil
     }
 
     addUsuarioSeguido(usuario) {
@@ -55,6 +108,7 @@ class Usuario{
         console.log(this.cifras)
 
         this.cifras.splice(this.cifras.indexOf(cifra), 1)
+        Usuario.rankeiaUsuarios(this)
         // Usuario.usuarios.splice(Usuario.usuarios.indexOf(Usuario.usuarios.find(usu => usu.usuario == usuarioNome)), 1)
     }
 
@@ -179,6 +233,6 @@ class Usuario{
     }
 
 }
-
+Usuario.rankingQuantidadeCifras = []
 Usuario.usuarios = []
 module.exports = Usuario

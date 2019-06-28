@@ -81,7 +81,6 @@ class Cifra{
 
     static rankeiaCifras(nomeMusica, total) {
         if(Cifra.rankingCifrasNota.length === 0) {
-            console.log("entrou onde devia")
             Cifra.rankingCifrasNota.push({nome: nomeMusica, nota: total})
         }else {
             let cifra = Cifra.rankingCifrasNota.find(cifra => cifra.nome === nomeMusica)
